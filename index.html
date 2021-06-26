@@ -232,7 +232,6 @@
 <div class='sub-section' id='inputs-a'></div>
 
 
-
 <script src='GET_INPUT_VALUES.js'></script>
 <script src='UPDATE_TABLE.js'></script>
 <script src='GETEXX.js'></script>
@@ -242,10 +241,10 @@
 <script src='GET_SOLUTION.js'></script>
 <script src='GET_ECONOMIC_OUTPUT.js'></script>
 <script src='UPDATE_OUTPUT_BOX.js'></script>
+<script src='DRAW_CURVE.js'></script>
+<script src='setup.js'></script>
 
 <script>
-
-
 
 let b = new Box("e", "Y");
 document.getElementById('box-container').appendChild(b.returnCanvas());
@@ -287,7 +286,6 @@ DRAW_CURVE(b, LM_CURVES.a, '#adc2eb', 2, 0, 1);
 DRAW_CURVE(b, LM_CURVES.b, '#3366cc', 2, 1, 1);
 
 UPDATE_TABLE(ECONOMIC_OUTPUT);
-console.log(ECONOMIC_OUTPUT);
 
 // use  ECONOMIC_OUTPUT to draw boxes
 
@@ -299,21 +297,12 @@ container_a.appendChild(output_box_a.returnCanvas());
 container_b.appendChild(output_box_b.returnCanvas());
 
 output_box_a.border('1px solid #ddd');
-output_box_a.dimension(300, 460);
-output_box_a.rangex(0, 100);
-output_box_a.rangey(0, 100);
-
 output_box_b.border('1px solid #ddd');
-output_box_b.dimension(300, 460);
-output_box_b.rangex(0, 100);
-output_box_b.rangey(0, 100);
+
 
 UPDATE_OUTPUT_BOX(output_box_a, ECONOMIC_OUTPUT.a);
 UPDATE_OUTPUT_BOX(output_box_b, ECONOMIC_OUTPUT.b);
 
-
-
-   
 let myinputs = document.getElementsByClassName('myinputs');
 for (let i = 0; i < myinputs.length; i++) {
   myinputs[i].addEventListener('input', function(e) {
@@ -358,38 +347,7 @@ for (let i = 0; i < myinputs.length; i++) {
   });
 }
 
-
-function DRAW_CURVE(b, arr, color, line_width, shift, dashed) {
-
- let i_ = 0;
- if (shift) {
-  i_ = 1;
- }
- 
- let di_ = 1;
- if (dashed) {
-  di_ = 2;
- }
-
- for (let i = i_; i < arr.length; i += di_) {
-   b.CONNECTVALUES({'x':arr[i][0][0],'y':arr[i][0][1]}, {'x':arr[i][1][0],'y':arr[i][1][1]}, color, line_width);
- }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
 
 <div class='section'>
  <h4> r & e : interactions : openness in financial markets, p115 </h4>
@@ -423,20 +381,18 @@ function DRAW_CURVE(b, arr, color, line_width, shift, dashed) {
 
  <p> this is for the interest piece, and while we know NX(Y,Y*,e), we need to know how r and e interact. this is the part where the LOE piece comes in. but here for small. i wonder.</p>
 
-For a country as a whole, openness in financial markets has another important implication.
-It allows the country to run trade surpluses and trade deficits. Recall that a country running
-a trade deficit is buying more from the rest of the world than it is selling to the rest of the
-world. In order to pay for the difference between what it buys and what it sells, the country
-must borrow from the rest of the world. It borrows by making it attractive for foreign financial investors to increase their holdings of domestic assets – in effect, to lend to the country
+open financial markets is what lets a country do trade surpluses and deficits
+In order to pay for the difference between what it buys and what it sells, the country
+must borrow from the rest of the world
+It borrows by making it attractive for foreign financial investors to increase their holdings of domestic assets – in effect, to lend to the country
 
-the choice is between holding domestic currency, domestic bonds, foreign currency, and foreign bonds
+<p> to the consumer, the choice is between holding domestic currency, domestic bonds, foreign currency, and foreign bonds</p>
 
-but there isn't much motive to hold foreign currency, for the most part, for most ppl
+<p>but there isn't much motive to hold foreign currency, for the most part, for most ppl</p>
 
-so they have to pick between domestic and foreign bonds
+<p>so they have to pick between domestic and foreign bonds</p>
 
 <p> what if E[e_{t+1}] = e_t ? then i = i*, and its a SOE, where the exchange rate equilibrates along with Y, and then e and r are not related...</p>
-<p> so i will maintain this, for the time being. </p>
 
 </div>
 
