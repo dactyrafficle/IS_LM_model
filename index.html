@@ -2,6 +2,8 @@
 
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="index.png">
 
 <title> keynesian : is-lm model : SOE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,7 +81,7 @@
  <tr>
   <td><span>G</span></td>
   <td><input class='myinputs' id='state_a_G' type='number' step=100 value='3000' /></td>
-  <td><input class='myinputs' id='state_b_G' type='number' step=100 value='3000' /></td>
+  <td><input class='myinputs' id='state_b_G' type='number' step=100 value='3700' /></td>
  </tr>
  
  <tr><td colspan='99'>INVESTMENTS</td></tr>
@@ -198,14 +200,8 @@
 </div>
 
 <div class='sub-section'>
- <div id='box-container'></div>
- <div class='sub-section'>
-  <div class='sub-section' id='economic-output-a' style='vertical-align: bottom;'></div>
-  <div class='sub-section' id='economic-output-b' style='vertical-align: bottom;'></div>
- </div>
-</div>
 
-<div class='sub-section'>
+ <div class='section'>
  <table class='mytables'>
   <tr><td colspan='99'>LES RESULTATS</td></tr>
   <tr><td>endo</td><td>before</td><td>apres</td></tr>
@@ -225,11 +221,25 @@
    <td><input class='myinputs' id='state_b_Y' disabled type='number' /></td>
   </tr>
  </table>
+ </div>
+ 
+ <div class='section'>
+
+   <div id='box-container' class='sub-section'></div>
+   <div class='sub-section'>
+    <div class='sub-section' id='economic-output-a' style='vertical-align: bottom;'></div>
+    <div class='sub-section' id='economic-output-b' style='vertical-align: bottom;'></div>
+   </div>
+
+ </div>
+ 
 </div>
+
+
 
 </div>
 
-<div class='sub-section' id='inputs-a'></div>
+<!-- <div class='sub-section' id='inputs-a'></div> -->
 
 
 <script src='GET_INPUT_VALUES.js'></script>
@@ -246,105 +256,28 @@
 
 <script>
 
-let b = new Box("e", "Y");
-document.getElementById('box-container').appendChild(b.returnCanvas());
-b.border('1px solid #ddd');
-b.dimension(500, 500);
-b.rangex(-1, 13);
-b.rangey(-5000, 45000);
+let b;
 
-let INPUT_VALUES = GET_INPUT_VALUES();
+let INPUT_VALUES;
 
 let IS_CURVES = {
- 'a':GET_IS_CURVE(INPUT_VALUES.a),
- 'b':GET_IS_CURVE(INPUT_VALUES.b)
+ 'a':null,
+ 'b':null
 };
 
 let SOLUTIONS = {
- 'a':GET_SOLUTION(INPUT_VALUES.a),
- 'b':GET_SOLUTION(INPUT_VALUES.b)
+ 'a':null,
+ 'b':null
 }
 
 let LM_CURVES = {
- 'a':[[[0, SOLUTIONS.a.Y],[b.data.range.x.max, SOLUTIONS.a.Y]]],
- 'b':[[[0, SOLUTIONS.b.Y],[b.data.range.x.max, SOLUTIONS.b.Y]]]
+ 'a':null,
+ 'b':null
 }
 
 let ECONOMIC_OUTPUT = {
- 'a':GET_ECONOMIC_OUTPUT(INPUT_VALUES.a, SOLUTIONS.a),
- 'b':GET_ECONOMIC_OUTPUT(INPUT_VALUES.b, SOLUTIONS.b)
-}
-
-b.clear();
-b.showAxes();
-b.SHOWGRIDX(1);
-b.SHOWGRIDY(5000);
-
-DRAW_CURVE(b, IS_CURVES.a, '#b3e6b3', 2, 0, 1);
-DRAW_CURVE(b, IS_CURVES.b, '#94b8b8', 2, 1, 1);
-DRAW_CURVE(b, LM_CURVES.a, '#adc2eb', 2, 0, 1);
-DRAW_CURVE(b, LM_CURVES.b, '#3366cc', 2, 1, 1);
-
-UPDATE_TABLE(ECONOMIC_OUTPUT);
-
-// use  ECONOMIC_OUTPUT to draw boxes
-
-let container_a = document.getElementById('economic-output-a');
-let container_b = document.getElementById('economic-output-b');
-let output_box_a = new Box();
-let output_box_b = new Box();
-container_a.appendChild(output_box_a.returnCanvas());
-container_b.appendChild(output_box_b.returnCanvas());
-
-output_box_a.border('1px solid #ddd');
-output_box_b.border('1px solid #ddd');
-
-
-UPDATE_OUTPUT_BOX(output_box_a, ECONOMIC_OUTPUT.a);
-UPDATE_OUTPUT_BOX(output_box_b, ECONOMIC_OUTPUT.b);
-
-let myinputs = document.getElementsByClassName('myinputs');
-for (let i = 0; i < myinputs.length; i++) {
-  myinputs[i].addEventListener('input', function(e) {
-
-    INPUT_VALUES = GET_INPUT_VALUES();
-
-    IS_CURVES = {
-     'a':GET_IS_CURVE(INPUT_VALUES.a),
-     'b':GET_IS_CURVE(INPUT_VALUES.b)
-    };
-
-    SOLUTIONS = {
-     'a':GET_SOLUTION(INPUT_VALUES.a),
-     'b':GET_SOLUTION(INPUT_VALUES.b)
-    }
-    
-    LM_CURVES = {
-     'a':[[[0, SOLUTIONS.a.Y],[b.data.range.x.max, SOLUTIONS.a.Y]]],
-     'b':[[[0, SOLUTIONS.b.Y],[b.data.range.x.max, SOLUTIONS.b.Y]]]
-    }
-
-    ECONOMIC_OUTPUT = {
-     'a':GET_ECONOMIC_OUTPUT(INPUT_VALUES.a, SOLUTIONS.a),
-     'b':GET_ECONOMIC_OUTPUT(INPUT_VALUES.b, SOLUTIONS.b)
-    }
-
-    b.clear();
-    b.showAxes();
-    b.SHOWGRIDX(1);
-    b.SHOWGRIDY(5000);
-
-    DRAW_CURVE(b, IS_CURVES.a, '#b3e6b3', 2, 0, 1);
-    DRAW_CURVE(b, IS_CURVES.b, '#94b8b8', 2, 1, 1);
-    DRAW_CURVE(b, LM_CURVES.a, '#adc2eb', 2, 0, 0);
-    DRAW_CURVE(b, LM_CURVES.b, '#3366cc', 2, 0, 0);
-    
-    UPDATE_TABLE(ECONOMIC_OUTPUT);
-    console.log(ECONOMIC_OUTPUT);
-    UPDATE_OUTPUT_BOX(output_box_a, ECONOMIC_OUTPUT.a);
-    UPDATE_OUTPUT_BOX(output_box_b, ECONOMIC_OUTPUT.b);
-
-  });
+ 'a':null,
+ 'b':null
 }
 
 </script>

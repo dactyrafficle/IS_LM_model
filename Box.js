@@ -199,7 +199,7 @@ Box.prototype.RECT_SOLID = function(val, w, h, color_string, line_width) {
 }
 Box.prototype.TEXT = function(str, val, color_string, font_size, font_family) {
  let pixel = this.VAL2PIXEL(val);
- console.log(pixel);
+ //console.log(pixel);
  this.ctx.font = '15px Arial';
  this.ctx.strokeStyle = (color_string || '#fff');
  this.ctx.fillText(str, pixel.x, pixel.y);
