@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+
+<title> keynesian : is-lm model : SOE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous">
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH" crossorigin="anonymous"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js" integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+<script src='Box.js'></script>
+<script src='includes.js'></script>
+<link rel='stylesheet' href='coding.css'>
+
+<style>
+
+.myinputs {
+ width: 100px;
+}
+
+
+</style>
+</head>
+
+<div class='section'>
+
+ <h4>how to make i and e interact?</h4>
+ <ul>
+  <li> put 2 economies side-by-side
+  <li> uncovered interest parity, add E[e]
+  <li> whatever mankiw used in ch8 appendix
+ </ul>
+ 
+<ul>
+  <li><strong>2 economies</strong>
+   <ul>side by side? r* is just the prevailing rate. when we do sthing for r to go down, investment goes up (is that also foreign investment?) since money is cheap. but it also makes other countries bonds appealing, so to invest, we take our money, buy foreign currency to invest over there, but in the process, sell our currency, so our currency depreciates. </li>
+  <li> other countries want to invest here, and to do so, they need currency. savers have currency. so supply for dollars comes from foreign investors looking to take advantage of the low interest rates, for investment purposes. and the supply is from domestic savers, who want to take their money and put them in foreign assets to get better yields. </p>
+  <li> that action, the supply and demand of our currency against the foreign currency, that will determine how much e and i change. </li>
+  </ul>
+</ul>
+
+ <p> add inflation and expected inflation</p>
+ <p>mankiw used sthing called purchasing power parity: that eP/P*=1, which i dont think blanchard uses </p>
+ <li> if there is any relationship between i and e, e = 100yen/$1 then the Y-r graph will be more complex, and e will not be constant along the lines - or is this just to show that the real exchange rate can be different. or that in a SOE i can change? and e will still change?</li>
+ <li><p> what if in a SOE the gov does G up AND M up? well, shouldn't that be a promising move? </p></li>
+
+
+<p> show trade surplus, and gov deficit. </p>
+<p>add amts and pct of gdp to boxes</p>
+</div>
+
+<div class='section'>
+<div class='sub-section'>
+<table class='mytables'>
+ <tr><td colspan='99'>IS curve</td></tr>
+ <tr><td colspan='99'>CONSUMER SPENDING</td></tr>
+ <tr>
+  <td><span>c</span></td>
+  <td><input class='myinputs' id='state_a_c' type='number' min=0 max=0.99 step=0.01 value='0.7' /></td>
+  <td><input class='myinputs' id='state_b_c' type='number' min=0 max=0.99 step=0.01 value='0.7' /></td></tr>
+ <tr>
+  <td><span>t</span></td>
+  <td><input class='myinputs' id='state_a_t' type='number' min=0 max=0.99 step=0.01 value='0.15' /></td>
+  <td><input class='myinputs' id='state_b_t' type='number' min=0 max=0.99 step=0.01 value='0.15' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>T = tY</span></td>
+  <td><input class='myinputs' id='state_a_T' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_T' disabled type='number' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>C(c, t, Y) = cY-ctY</span></td>
+  <td><input class='myinputs' id='state_a_C' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_C' disabled type='number' /></td>
+ </tr>
+ <tr>
+  <td><span>G</span></td>
+  <td><input class='myinputs' id='state_a_G' type='number' step=100 value='3000' /></td>
+  <td><input class='myinputs' id='state_b_G' type='number' step=100 value='3000' /></td>
+ </tr>
+ 
+ <tr><td colspan='99'>INVESTMENTS</td></tr>
+ <tr>
+  <td><span class='math'>I_0</span></td>
+  <td><input class='myinputs' id='state_a_I_0' type='number' step=100 value='5000' /></td>
+  <td><input class='myinputs' id='state_b_I_0' type='number' step=100 value='5000' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>\kappa</span></td>
+  <td><input class='myinputs' id='state_a_kappa' type='number' step=0.01 value='0.04' /></td>
+  <td><input class='myinputs' id='state_b_kappa' type='number' step=0.01 value='0.04' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>\lambda</span></td>
+  <td><input class='myinputs' id='state_a_lambda' type='number' step=0.01 value='0.2' /></td>
+  <td><input class='myinputs' id='state_b_lambda' type='number' step=0.01 value='0.2' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>I(Y,i) = I_0 \cdot \dfrac{Y^{\kappa}}{i^{\lambda}}</span></td>
+  <td><input class='myinputs' id='state_a_I' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_I' disabled type='number' /></td>
+ </tr>
+
+ <tr><td colspan='99'>EXPORTS</td></tr>
+ <tr>
+  <td><span class='math'>X_0</span></td>
+  <td><input class='myinputs' id='state_a_X_0' type='number' step=100 value='500' /></td>
+  <td><input class='myinputs' id='state_b_X_0' type='number' step=100 value='500' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>Y^*</span></td>
+  <td><input class='myinputs' id='state_a_Y_f' type='number' step=1000 value='10000' /></td>
+  <td><input class='myinputs' id='state_b_Y_f' type='number' step=1000 value='10000' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>\rho</span></td>
+  <td><input class='myinputs' id='state_a_rho' type='number' step=0.01 value='0.36' /></td>
+  <td><input class='myinputs' id='state_b_rho' type='number' step=0.01 value='0.36' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>\sigma</span></td>
+  <td><input class='myinputs' id='state_a_sigma' type='number' step=0.01 value='0.34' /></td>
+  <td><input class='myinputs' id='state_b_sigma' type='number' step=0.01 value='0.34' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>X(Y^*,e) = X_0 \cdot \dfrac{{Y^*}^{\rho}}{e^{\sigma}}</span></td>
+  <td><input class='myinputs' id='state_a_X' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_X' disabled type='number' /></td>
+ </tr>
+
+ <tr><td colspan='99'>IMPORTS</td></tr>
+ <tr>
+  <td><span class='math'>IM_0</span></td>
+  <td><input class='myinputs' id='state_a_IM_0' type='number' step=100 value='500' /></td>
+  <td><input class='myinputs' id='state_b_IM_0' type='number' step=100 value='500' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>\nu</span></td>
+  <td><input class='myinputs' id='state_a_nu' type='number' step=0.01 value='0.2' /></td>
+  <td><input class='myinputs' id='state_b_nu' type='number' step=0.01 value='0.2' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>\tau</span></td>
+  <td><input class='myinputs' id='state_a_tau' type='number' step=0.01 value='0.3' /></td>
+  <td><input class='myinputs' id='state_b_tau' type='number' step=0.01 value='0.3' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>IM(Y,e) = IM_0 \cdot Y^{\nu} \cdot e^{\tau}</span></td>
+  <td><input class='myinputs' id='state_a_IM' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_IM' disabled type='number' /></td>
+ </tr>
+ <tr>
+  <td>NET EXPORTS</td>
+  <td><input class='myinputs' id='state_a_NX' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_NX' disabled type='number' /></td>
+ </tr>
+ <tr>
+  <td>Y</td>
+  <td><input class='myinputs' id='state_a_Y_IS' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_Y_IS' disabled type='number' /></td>
+ </tr>
+ 
+ <tr><td colspan='99'>LM curve</td></tr>
+ <tr>
+  <td><span>M</span></td>
+  <td><input class='myinputs' id='state_a_M' type='number' step=5000 value='470000' /></td>
+  <td><input class='myinputs' id='state_b_M' type='number' step=5000 value='470000' /></td>
+ </tr>
+ <tr>
+  <td><span>P</span></td>
+  <td><input class='myinputs' id='state_a_P' type='number' step=0.0001 value='1.03' /></td>
+  <td><input class='myinputs' id='state_b_P' type='number' step=0.0001 value='1.03' /></td>
+ </tr>
+ <tr>
+  <td><span>gamma</span></td>
+  <td><input class='myinputs' id='state_a_gamma' type='number' step=0.01 value='3' /></td>
+  <td><input class='myinputs' id='state_b_gamma' type='number' step=0.01 value='3' /></td>
+ </tr>
+ <tr>
+  <td><span>epsilon</span></td>
+  <td><input class='myinputs' id='state_a_epsilon' type='number' step=0.01 value='1.89' /></td>
+  <td><input class='myinputs' id='state_b_epsilon' type='number' step=0.01 value='1.89' /></td>
+ </tr>
+ <tr>
+  <td><span>theta</span></td>
+  <td><input class='myinputs' id='state_a_theta' type='number' step=0.01 value='4' /></td>
+  <td><input class='myinputs' id='state_b_theta' type='number' step=0.01 value='4' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>Y = \Big (\dfrac{1}{\gamma} \cdot \dfrac{M}{P} \Big )^{1/ \epsilon} \cdot r^{\theta / \epsilon}</span></td>
+  <td><input class='myinputs' id='state_a_Y_LM' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_Y_LM' disabled type='number' /></td>
+ </tr>
+</table>
+</div>
+
+<div class='sub-section'>
+ <div id='box-container'></div>
+ <div class='sub-section'>
+  <div class='sub-section' id='economic-output-a' style='vertical-align: bottom;'></div>
+  <div class='sub-section' id='economic-output-b' style='vertical-align: bottom;'></div>
+ </div>
+</div>
+
+<div class='sub-section'>
+ <table class='mytables'>
+  <tr><td colspan='99'>LES RESULTATS</td></tr>
+  <tr><td>endo</td><td>before</td><td>apres</td></tr>
+  <tr>
+   <td>r</td>
+   <td><input class='myinputs' id='state_a_r' type='number' step=0.01 value='6' /></td>
+   <td><input class='myinputs' id='state_b_r' type='number' step=0.01 value='6' /></td>
+  </tr>
+  <tr>
+   <td>e</td>
+   <td><input class='myinputs' id='state_a_e' disabled type='number' /></td>
+   <td><input class='myinputs' id='state_b_e' disabled type='number' /></td>
+  </tr>
+  <tr>
+   <td>Y</td>
+   <td><input class='myinputs' id='state_a_Y' disabled type='number' /></td>
+   <td><input class='myinputs' id='state_b_Y' disabled type='number' /></td>
+  </tr>
+ </table>
+</div>
+
+</div>
+
+<div class='sub-section' id='inputs-a'></div>
+
+
+
+<script src='GET_INPUT_VALUES.js'></script>
+<script src='UPDATE_TABLE.js'></script>
+<script src='GETEXX.js'></script>
+<script src='GETYIS.js'></script>
+<script src='GETEIS.js'></script>
+<script src='GET_IS_CURVE.js'></script>
+<script src='GET_SOLUTION.js'></script>
+<script src='GET_ECONOMIC_OUTPUT.js'></script>
+<script src='UPDATE_OUTPUT_BOX.js'></script>
+
+<script>
+
+
+
+let b = new Box("e", "Y");
+document.getElementById('box-container').appendChild(b.returnCanvas());
+b.border('1px solid #ddd');
+b.dimension(500, 500);
+b.rangex(-1, 13);
+b.rangey(-5000, 45000);
+
+let INPUT_VALUES = GET_INPUT_VALUES();
+
+let IS_CURVES = {
+ 'a':GET_IS_CURVE(INPUT_VALUES.a),
+ 'b':GET_IS_CURVE(INPUT_VALUES.b)
+};
+
+let SOLUTIONS = {
+ 'a':GET_SOLUTION(INPUT_VALUES.a),
+ 'b':GET_SOLUTION(INPUT_VALUES.b)
+}
+
+let LM_CURVES = {
+ 'a':[[[0, SOLUTIONS.a.Y],[b.data.range.x.max, SOLUTIONS.a.Y]]],
+ 'b':[[[0, SOLUTIONS.b.Y],[b.data.range.x.max, SOLUTIONS.b.Y]]]
+}
+
+let ECONOMIC_OUTPUT = {
+ 'a':GET_ECONOMIC_OUTPUT(INPUT_VALUES.a, SOLUTIONS.a),
+ 'b':GET_ECONOMIC_OUTPUT(INPUT_VALUES.b, SOLUTIONS.b)
+}
+
+b.clear();
+b.showAxes();
+b.SHOWGRIDX(1);
+b.SHOWGRIDY(5000);
+
+DRAW_CURVE(b, IS_CURVES.a, '#b3e6b3', 2, 0, 1);
+DRAW_CURVE(b, IS_CURVES.b, '#94b8b8', 2, 1, 1);
+DRAW_CURVE(b, LM_CURVES.a, '#adc2eb', 2, 0, 1);
+DRAW_CURVE(b, LM_CURVES.b, '#3366cc', 2, 1, 1);
+
+UPDATE_TABLE(ECONOMIC_OUTPUT);
+console.log(ECONOMIC_OUTPUT);
+
+// use  ECONOMIC_OUTPUT to draw boxes
+
+let container_a = document.getElementById('economic-output-a');
+let container_b = document.getElementById('economic-output-b');
+let output_box_a = new Box();
+let output_box_b = new Box();
+container_a.appendChild(output_box_a.returnCanvas());
+container_b.appendChild(output_box_b.returnCanvas());
+
+output_box_a.border('1px solid #ddd');
+output_box_a.dimension(300, 460);
+output_box_a.rangex(0, 100);
+output_box_a.rangey(0, 100);
+
+output_box_b.border('1px solid #ddd');
+output_box_b.dimension(300, 460);
+output_box_b.rangex(0, 100);
+output_box_b.rangey(0, 100);
+
+UPDATE_OUTPUT_BOX(output_box_a, ECONOMIC_OUTPUT.a);
+UPDATE_OUTPUT_BOX(output_box_b, ECONOMIC_OUTPUT.b);
+
+
+
+   
+let myinputs = document.getElementsByClassName('myinputs');
+for (let i = 0; i < myinputs.length; i++) {
+  myinputs[i].addEventListener('input', function(e) {
+
+    INPUT_VALUES = GET_INPUT_VALUES();
+
+    IS_CURVES = {
+     'a':GET_IS_CURVE(INPUT_VALUES.a),
+     'b':GET_IS_CURVE(INPUT_VALUES.b)
+    };
+
+    SOLUTIONS = {
+     'a':GET_SOLUTION(INPUT_VALUES.a),
+     'b':GET_SOLUTION(INPUT_VALUES.b)
+    }
+    
+    LM_CURVES = {
+     'a':[[[0, SOLUTIONS.a.Y],[b.data.range.x.max, SOLUTIONS.a.Y]]],
+     'b':[[[0, SOLUTIONS.b.Y],[b.data.range.x.max, SOLUTIONS.b.Y]]]
+    }
+
+    ECONOMIC_OUTPUT = {
+     'a':GET_ECONOMIC_OUTPUT(INPUT_VALUES.a, SOLUTIONS.a),
+     'b':GET_ECONOMIC_OUTPUT(INPUT_VALUES.b, SOLUTIONS.b)
+    }
+
+    b.clear();
+    b.showAxes();
+    b.SHOWGRIDX(1);
+    b.SHOWGRIDY(5000);
+
+    DRAW_CURVE(b, IS_CURVES.a, '#b3e6b3', 2, 0, 1);
+    DRAW_CURVE(b, IS_CURVES.b, '#94b8b8', 2, 1, 1);
+    DRAW_CURVE(b, LM_CURVES.a, '#adc2eb', 2, 0, 0);
+    DRAW_CURVE(b, LM_CURVES.b, '#3366cc', 2, 0, 0);
+    
+    UPDATE_TABLE(ECONOMIC_OUTPUT);
+    console.log(ECONOMIC_OUTPUT);
+    UPDATE_OUTPUT_BOX(output_box_a, ECONOMIC_OUTPUT.a);
+    UPDATE_OUTPUT_BOX(output_box_b, ECONOMIC_OUTPUT.b);
+
+  });
+}
+
+
+function DRAW_CURVE(b, arr, color, line_width, shift, dashed) {
+
+ let i_ = 0;
+ if (shift) {
+  i_ = 1;
+ }
+ 
+ let di_ = 1;
+ if (dashed) {
+  di_ = 2;
+ }
+
+ for (let i = i_; i < arr.length; i += di_) {
+   b.CONNECTVALUES({'x':arr[i][0][0],'y':arr[i][0][1]}, {'x':arr[i][1][0],'y':arr[i][1][1]}, color, line_width);
+ }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<div class='section'>
+ <h4> r & e : interactions : openness in financial markets, p115 </h4>
+ 
+ <p> you can invest $1 today domestically at the domestic rate, and get (1+i) in one year </p>
+ 
+ <p> or you can take that $1, buy $e ($1 x e foreign/domestic) foreign currency, get i+i* interest yielding e(i+i*), but then you have to sell that back to domestic currency at e_{t+1}, so you get $$\dfrac{e_t(1+i^*)}{e_{t+1}}$$. But you don't know what next year's exchange rate will be so you guess. </p> 
+ 
+ $$\dfrac{e_t(1+i^*)}{E[e_{t+1}]}$$
+ 
+ <p> Anyhow, those are your 2 options:
+  <ul>
+   <li> buy domestic bonds
+   <li> buy foreign bonds
+  </ul>
+ 
+ <p> For the markets to work, the returns have to be equal.</p>
+ 
+ $$1+ i = \dfrac{e_t(1+i^*)}{E[e_{t+1}]}$$
+ 
+ <p> You can also rewrite it like <span class='math'>1+ i = (1+i^*) \big ( \frac{e_t + E[\Delta e_{t+1}]}{e_t} \big )^{-1} = (1+i^*) (1 + \frac{ E[\Delta e_{t+1}]}{e_t})^{-1} = (1+i) = \frac{(1+i^*)}{(1+E[\%\Delta e])} \approx i = i^* - E[\%\Delta e]</span>.</p>
+ 
+ <h4> what if E[e_{t+1]] = e_t ? </h4>
+ 
+ <p> then i = i* and interest and exchange are not related. in that case, i=i* means Y and e equilibrate the whole economy. </p>
+ 
+ <p> what if 2 countries have different expectations about the exchange rate? </p>
+</div>
+
+<div class='section'>
+
+ <p> this is for the interest piece, and while we know NX(Y,Y*,e), we need to know how r and e interact. this is the part where the LOE piece comes in. but here for small. i wonder.</p>
+
+For a country as a whole, openness in financial markets has another important implication.
+It allows the country to run trade surpluses and trade deficits. Recall that a country running
+a trade deficit is buying more from the rest of the world than it is selling to the rest of the
+world. In order to pay for the difference between what it buys and what it sells, the country
+must borrow from the rest of the world. It borrows by making it attractive for foreign financial investors to increase their holdings of domestic assets – in effect, to lend to the country
+
+the choice is between holding domestic currency, domestic bonds, foreign currency, and foreign bonds
+
+but there isn't much motive to hold foreign currency, for the most part, for most ppl
+
+so they have to pick between domestic and foreign bonds
+
+<p> what if E[e_{t+1}] = e_t ? then i = i*, and its a SOE, where the exchange rate equilibrates along with Y, and then e and r are not related...</p>
+<p> so i will maintain this, for the time being. </p>
+
+</div>
+
+<div class='section'>
+<p> why use i instead of r? i = r + &pi;, so if we assume inflation is 0? then we can say r = i?</p>
+
+<p> i should write functions for each. ie. function getExports(Y,i) etc.</p>
+
+<p> maybe i need INFLATION, and expected INFLATION, and country RISK </p>
+
+
+<h4> make an economy the exact same as yours, but scale it, so that its constants are like 0.1x or 10x bigger </h4>
+
+
+</div>
+
+
+<div class='section'>
+
+<h4> where i can find mankiw ch8 appendix - US as LOE </h4>
+
+<h4>uncovered interest rate parity</h4>
+
+<p><span class='math'>1+i_d = (1 + i_f) \cdot \dfrac{e_t}{E[e_{t+1}]} </span></p>
+
+<p> but this must depend on size... </p>
+
+</div>
+
+<div class='section'>
+
+<h4>exchange rate </h4>
+
+<p><span class='math'>\epsilon = \dfrac{eP}{P^*}</span></p>
+
+<p> e is the number of Yen I can get for a $ . its the price of $ in yen</p>
+
+<p> i and e move together generally </p>
+
+<p> in the is-lm-fx model, if the eurozone increase their interest rate, it causes the us interest rate to rise. </p>
+
+</div>
+
+
+<div class='section'>
+
+ <h4> Overview </h4>
+ <p> A short term equilibrium is the solution to the following 2 equations :</p>
+ 
+ <table class='mytables'>
+ <tr><td>IS curve : goods </td><td><span class='math'>Y_{e} = C(Y_{i},T) + I(r) + G + NX(e)</span></td></tr>
+ <tr><td>LM curve : money market</td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td></tr>
+ </table>
+
+ <h4> Comments </h4>
+ <p> This model is for the short term. </p>
+ <p> The idea here is the the IS curve establishes Y, r, e </p>
+ <p> The LM curve maps maps how much money people need to buy the things they want</p>
+ <p> Sticky prices : wages and prices are fixed to reflect the fact that they do not adjust quickly</p>
+
+</div>
+
+<div class='section'>
+
+ <div class='section'>
+ <p> Examine <span class='math'>L(r,Y)</span> for a sec. </p>
+ <p> What is epsilon? And what is theta? </p>
+ <p> If <span class='math'>L = A Y^{\epsilon}</span>, then <span class='math'>\frac{dL}{dY} = \epsilon A Y^{\epsilon-1} = \epsilon A Y^{\epsilon} Y^{-1} = \epsilon L Y^{-1}</span></p>
+ 
+ <p> So that means <span class='math'>\dfrac{dL/L}{dY/Y} = \frac{dL}{dY} \frac{Y}{L} = \epsilon L Y^{-1} \cdot Y L^{-1} = \epsilon</span></p>
+ 
+ <p> If <span class='math'>Y_2=1.01 \cdot Y_1</span>, then <span class='math'> \Delta Y = Y_2-Y_1=0.01Y_1</span></p>
+ 
+ <p> So <span class='math'>\dfrac{\Delta L/L}{\Delta Y/Y} = \dfrac{\Delta L/L}{\Delta 0.01 \cdot Y_1/Y_1} = \dfrac{\Delta L/L}{0.01} = \epsilon</span></p>
+ 
+ <p> Meaning <span class='math'>\Delta L/L = 0.01 \cdot \epsilon </span>
+ 
+ <p> So a <span class='inline-code'>1%</span> change in Y means an <span class='inline-code'>&epsilon; %</span> change in L </p>
+ 
+ <p> Conversely, a <span class='inline-code'>1%</span> change in r means a <span class='inline-code'>-&theta; %</span> change in L </p>
+ 
+ </div>
+ 
+
+
+
+</body>
+
+ 
+</html>
