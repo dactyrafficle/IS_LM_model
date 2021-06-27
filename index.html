@@ -36,20 +36,18 @@
   <li> whatever mankiw used in ch8 appendix
  </ul>
  
-<ul>
+ <p> if there is any relationship between i and e, e = 100yen/$1 then the Y-r graph will be more complex, and e will not be constant along the lines - or is this just to show that the real exchange rate can be different. or that in a SOE i can change? and e will still change?</p>
+
+ <ul>
   <li><strong>2 economies</strong>
    <ul>side by side? r* is just the prevailing rate. when we do sthing for r to go down, investment goes up (is that also foreign investment?) since money is cheap. but it also makes other countries bonds appealing, so to invest, we take our money, buy foreign currency to invest over there, but in the process, sell our currency, so our currency depreciates. </li>
   <li> other countries want to invest here, and to do so, they need currency. savers have currency. so supply for dollars comes from foreign investors looking to take advantage of the low interest rates, for investment purposes. and the supply is from domestic savers, who want to take their money and put them in foreign assets to get better yields. </p>
   <li> that action, the supply and demand of our currency against the foreign currency, that will determine how much e and i change. </li>
   </ul>
-</ul>
+ </ul>
 
- <p>mankiw used sthing called purchasing power parity: that eP/P*=1, which i dont think blanchard uses </p>
- <li> if there is any relationship between i and e, e = 100yen/$1 then the Y-r graph will be more complex, and e will not be constant along the lines - or is this just to show that the real exchange rate can be different. or that in a SOE i can change? and e will still change?</li>
+ <p> show trade surplus, and gov deficit. </p>
 
-
-<p> show trade surplus, and gov deficit. </p>
-<p>add amts and pct of gdp to boxes</p>
 </div>
 
 <div class='section'>
@@ -78,8 +76,8 @@
  </tr>
  <tr>
   <td><span>G</span></td>
-  <td><input class='myinputs' id='state_a_G' type='number' step=100 value='3000' /></td>
-  <td><input class='myinputs' id='state_b_G' type='number' step=100 value='3000' /></td>
+  <td><input class='myinputs' id='state_a_G' type='number' step=100 value='5000' /></td>
+  <td><input class='myinputs' id='state_b_G' type='number' step=100 value='5000' /></td>
  </tr>
  
  <tr><td colspan='99'>INVESTMENTS</td></tr>
@@ -89,12 +87,12 @@
   <td><input class='myinputs' id='state_b_I_0' type='number' step=100 value='5000' /></td>
  </tr>
  <tr>
-  <td><span class='math'>\kappa</span></td>
+  <td><span class='math'>\kappa</span> : income elasticity of investment</td>
   <td><input class='myinputs' id='state_a_kappa' type='number' step=0.01 value='0.04' /></td>
   <td><input class='myinputs' id='state_b_kappa' type='number' step=0.01 value='0.04' /></td>
  </tr>
  <tr>
-  <td><span class='math'>\lambda</span></td>
+  <td><span class='math'>\lambda</span>: interest elasticity of investment</td>
   <td><input class='myinputs' id='state_a_lambda' type='number' step=0.01 value='0.2' /></td>
   <td><input class='myinputs' id='state_b_lambda' type='number' step=0.01 value='0.2' /></td>
  </tr>
@@ -175,17 +173,17 @@
   <td><input class='myinputs' id='state_b_P' type='number' step=0.0001 value='1.03' /></td>
  </tr>
  <tr>
-  <td><span>gamma</span></td>
+  <td><span>L_0 (gamma) : just a multiplier</span></td>
   <td><input class='myinputs' id='state_a_gamma' type='number' step=0.01 value='3' /></td>
   <td><input class='myinputs' id='state_b_gamma' type='number' step=0.01 value='3' /></td>
  </tr>
  <tr>
-  <td><span>epsilon</span></td>
+  <td><span>&epsilon; : income elasticity of L</span></td>
   <td><input class='myinputs' id='state_a_epsilon' type='number' step=0.01 value='1.89' /></td>
   <td><input class='myinputs' id='state_b_epsilon' type='number' step=0.01 value='1.89' /></td>
  </tr>
  <tr>
-  <td><span>theta</span></td>
+  <td><span>&theta; : interest elasticity of L</span></td>
   <td><input class='myinputs' id='state_a_theta' type='number' step=0.01 value='4' /></td>
   <td><input class='myinputs' id='state_b_theta' type='number' step=0.01 value='4' /></td>
  </tr>
@@ -257,7 +255,7 @@
   <li> You invest the money at interest rate i_t
   <li> Next year, you have xp_t(1+i_t)
   <li> You use that money to buy x. But the price has changed, and is now p_{t+1}
-  <li><p>So you can buy <span class='math'>x_{t+1} = \dfrac{xp_t(1+i_t)}{p_{t+1}}</span></p>
+  <li><p>So you can buy <span class='math'>x_{t+1} = \dfrac{x_tp_t(1+i_t)}{p_{t+1}}</span></p>
   <li><p> So at t you had x, but at t+1 you can have <span class='math'>x_{t+1}</span></p>
   <li><p>That means the real interest rate is <span class='math'>x_t(1+r_t) = x_{t+1}</span></p>
   <li><p><span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{p_{t+1}}</span></p>
@@ -265,17 +263,12 @@
  </ul>
  
  <p><span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{E[p_{t+1}]}</span></p>
- <p><span class='math'>1+r_t = (1+i_t) \cdot ( \dfrac{E[p_{t+1}]}{p_t} ) ^{-1}</span></p>
- <p><span class='math'>1+r_t = (1+i_t) \cdot ( \dfrac{E[p_t + \Delta p_{t+1}]}{p_t} ) ^{-1}</span></p>
- <p><span class='math'>1+r_t = (1+i_t) \cdot ( \dfrac{p_t + E[\Delta p_{t+1}]}{p_t} ) ^{-1}</span></p>
- 
- <p><span class='math'>1+r_t = (1+i_t) \cdot ( 1 + \dfrac{E[\Delta p_{t+1}]}{p_t} ) ^{-1}</span></p>
- <p><span class='math'>1+r_t = (1+i_t) \cdot ( 1 + E[ \dfrac{\Delta p_{t+1}}{p_t} ] ) ^{-1}</span></p>
+ <p><span class='math'>\pi_{t+1} = \dfrac{p_{t+1}}{p_t}</span></p>
  <p><span class='math'>1+r_t = (1+i_t) \cdot ( 1 + E[ \pi_{t+1} ] ) ^{-1}</span></p>
  
  <p><span class='math outline'>r_t \approx i_t - E[\pi_{t+1}]</span></p>
 
-<h4> Why? </h4>
+<h4> Why bother with this? </h4>
 
 <p> Companies invest based on the real interest rate, r, so I=I(Y,r)</p>
 
@@ -328,6 +321,7 @@
 <script>
 
 let b;
+let output_box;
 
 let INPUT_VALUES;
 
@@ -437,6 +431,9 @@ It borrows by making it attractive for foreign financial investors to increase t
 <p> i and e move together generally </p>
 
 <p> in the is-lm-fx model, if the eurozone increase their interest rate, it causes the us interest rate to rise. </p>
+
+
+ <p>mankiw used sthing called purchasing power parity: that eP/P*=1, which i dont think blanchard uses </p>
 
 </div>
 

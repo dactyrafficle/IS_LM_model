@@ -1,4 +1,4 @@
-function UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box, ECONOMIC_OUTPUT_, Y_initial, YMAX) {
+function UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box) {
 
  // PIXELS
  let output_box_w = 600;
@@ -48,21 +48,21 @@ function UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box, ECONOMIC_OUTPUT_, Y_init
  py = DRAW_BOX('IM', b.IM, 2, b.Y, x4, py, '#ffb3d1', a.IM);
  
  function DRAW_BOX(sector_name, sector_value, state, state_gdp, px, py, color_string, initial_sector_value) {
-   console.log(px);
+   //console.log(px);
    let rect_h = sector_value/ZMAX*output_box.data.range.y.span-dx*2;
    output_box.RECT_OUTLINE({'x':px,'y':py}, rect_w, -rect_h, color_string, dx*4); // BLUE
-   output_box.TEXT(sector_name + state + ' : ' + (sector_value).toFixed(0), {'x':px+dx*2, 'y':py + rect_h*0.5}, '#333', 12, 'Monospace');
+   output_box.TEXT(sector_name + state + ' : ' + (sector_value).toFixed(0), {'x':px+dx*2, 'y':py + rect_h-3}, '#333', 12, 'Monospace');
    
    if (sector_name !== 'Y') {
-    output_box.TEXT('/Y' + state + ' : ' + ((sector_value/state_gdp)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h*0.5-3}, '#333', 12, 'Monospace');
+    output_box.TEXT('/Y' + state + ' : ' + ((sector_value/state_gdp)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h-6}, '#333', 12, 'Monospace');
    }
    
    if (initial_sector_value) {
-    let shift = 6;
+    let shift = 9;
     if (sector_name === 'Y') {
-      shift = 3;
+      shift = 6;
     }
-    output_box.TEXT('/' + sector_name + '1 : ' + ((sector_value/initial_sector_value)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h*0.5-shift}, '#333', 12, 'Monospace');
+    output_box.TEXT('/' + sector_name + '1 : ' + ((sector_value/initial_sector_value)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h-shift}, '#333', 12, 'Monospace');
    }
    py += rect_h + dx*2;
    return py;

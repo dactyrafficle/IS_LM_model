@@ -1,6 +1,6 @@
 function GET_ECONOMIC_OUTPUT(INPUT_VALUE, SOLUTION) {
 
- console.log(SOLUTION);
+ //console.log(SOLUTION);
  let output = {};
  
  output.T = SOLUTION.Y*INPUT_VALUE.t,

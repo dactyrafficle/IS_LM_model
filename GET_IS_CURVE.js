@@ -1,9 +1,13 @@
 function GET_IS_CURVE(obj) {
-  //console.log(obj);
-  let de = 0.1;
-  let output = new Array(b.data.range.x.max/de-1);
+
+  let n_dashes = 30;
+  let visible_range = b.data.range.x.max;
+  let de = 0.5*(visible_range / n_dashes);
+
+  //console.log(Math.ceil(b.data.range.x.max/de-1));
+  let output = new Array(n_dashes);
   let count = 0;
-  for (let e = de; e < b.data.range.x.max; e += de) {
+  for (let e = de; e < n_dashes; e += de) {
    
     // IS CURVE
     let e0 = e;
