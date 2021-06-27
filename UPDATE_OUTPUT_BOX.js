@@ -1,71 +1,70 @@
-function UPDATE_OUTPUT_BOX(output_box, ECONOMIC_OUTPUT, YMAX) {
+function UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box, ECONOMIC_OUTPUT_, Y_initial, YMAX) {
 
- console.log(YMAX);
+ // PIXELS
+ let output_box_w = 600;
+ let output_box_h = 600;
 
- let Y = ECONOMIC_OUTPUT.Y;
- let C = ECONOMIC_OUTPUT.C;
- let I = ECONOMIC_OUTPUT.I;
- let G = ECONOMIC_OUTPUT.G;
- let X = ECONOMIC_OUTPUT.X;
- let IM = ECONOMIC_OUTPUT.IM;
- 
  output_box.clear();
-
- output_box.dimension(300, 500);
+ output_box.dimension(output_box_w, output_box_h);
  output_box.rangex(0, 100);
  output_box.rangey(0, 100);
  
- // BORDER THICKNESS
- let line_width = 2;
- let section_width = output_box.data.range.x.span*0.5 - line_width;
- 
- let s0 = 0;
- let s1 = C/(YMAX)*output_box.data.range.y.span;
- let val = {
-   'x':0,
-   'y':0,
-   'h':0
- }
- output_box.RECT_OUTLINE({'x':line_width*0.5,'y':s0+line_width*0.5}, section_width, -s1+line_width, '#adc2eb', line_width); // BLUE
+ let a = ECONOMIC_OUTPUT.a;
+ let b = ECONOMIC_OUTPUT.b;
 
- s0 += s1;
- s1 = I/(YMAX)*output_box.data.range.y.span;
- output_box.RECT_OUTLINE({'x':line_width*0.5,'y':s0+line_width*0.5}, section_width, -s1+line_width, '#ffccff', line_width); // PINK
+ // Z = Y + IM = C + I + G + X
+ let ZMAX; 
+ if ((a.Y + a.IM) > (b.Y + b.IM)) {
+  ZMAX = (a.Y + a.IM);
+ } else {
+  ZMAX = (b.Y + b.IM);
+ }
  
- s0 += s1;
- s1 = G/(YMAX)*output_box.data.range.y.span;
- val.x = 0 + line_width*0.5;
- val.y = s0+line_width*0.5;
- val.h = s1-line_width;
- //output_box.RECT_SOLID({'x':0,'y':s0}, 50, -s1, '#ffd9b3', line_width); // ORANGE
- output_box.RECT_OUTLINE({'x':line_width*0.5,'y':s0+line_width*0.5}, section_width, -s1+line_width, '#ffd9b3', line_width); // PINK
- output_box.TEXT('G : ' + (G).toFixed(0), {'x': val.x+5, 'y':(val.y+val.h*0.5)}, '#333');
+ let dx = 0.5;
+ let rect_w = output_box.data.range.x.span/4-dx*2;
+ let x1 = dx;
+ let x2 = x1 + rect_w + 2*dx;
+ let x3 = x2 + rect_w + 2*dx;
+ let x4 = x3 + rect_w + 2*dx;
+
+ let py = dx;
+ py = DRAW_BOX('C', a.C, 1, a.Y, x1, py, '#adc2eb');
+ py = DRAW_BOX('I', a.I, 1, a.Y, x1, py, '#ffccff');
+ py = DRAW_BOX('G', a.G, 1, a.Y, x1, py, '#ffcc66');
+ py = DRAW_BOX('X', a.X, 1, a.Y, x1, py, '#d1e0e0');
+
+ py = dx;
+ py = DRAW_BOX('Y', a.Y, 1, a.Y, x2, py, '#ffecb3');
+ py = DRAW_BOX('IM', a.IM, 1, a.Y, x2, py, '#ffb3d1');
  
- s0 += s1;
- s1 = X/(YMAX)*output_box.data.range.y.span;
- val.x = 0 + line_width*0.5;
- val.y = s0+line_width*0.5;
- val.h = s1-line_width;
- //output_box.RECT_SOLID({'x':0,'y':s0}, 50, -s1, '#d1e0e0', line_width); // GREEN
- output_box.RECT_OUTLINE({'x':line_width*0.5,'y':s0+line_width*0.5}, section_width, -s1+line_width, '#d1e0e0', line_width);
- output_box.TEXT('X : ' + (X).toFixed(0), {'x': val.x+5, 'y':(val.y+val.h*0.5)}, '#333');
+ py = dx;
+ py = DRAW_BOX('C', b.C, 2, b.Y, x3, py, '#adc2eb', a.C);
+ py = DRAW_BOX('I', b.I, 2, b.Y, x3, py, '#ffccff', a.I);
+ py = DRAW_BOX('G', b.G, 2, b.Y, x3, py, '#ffcc66', a.G);
+ py = DRAW_BOX('X', b.X, 2, b.Y, x3, py, '#d1e0e0', a.X);
  
- s0 = 0;
- s1 = Y/(YMAX)*output_box.data.range.y.span;
- //output_box.RECT_SOLID({'x':50,'y':s0}, 50, -s1, '#ffecb3', line_width); // YELLOW
- val.x = output_box.data.range.x.span*0.5 + line_width*0.5;
- val.y = s0+line_width*0.5;
- val.h = s1-line_width;
- output_box.RECT_OUTLINE(val, section_width, -val.h, '#ffecb3', line_width);
- output_box.TEXT('GDP : ' + (Y).toFixed(0), {'x': val.x+5, 'y':(val.y+val.h*0.5)}, '#333');
+ py = dx;
+ py = DRAW_BOX('Y', b.Y, 2, b.Y, x4, py, '#ffecb3', a.Y);
+ py = DRAW_BOX('IM', b.IM, 2, b.Y, x4, py, '#ffb3d1', a.IM);
  
- 
- s0 += s1;
- s1 = IM/(YMAX)*output_box.data.range.y.span;
- val.x = output_box.data.range.x.span*0.5 + line_width*0.5;
- val.y = s0+line_width*0.5;
- val.h = s1-line_width;
- //output_box.RECT_SOLID({'x':50,'y':s0}, 50, -s1, '#ffb3d1', line_width); // RED
- output_box.RECT_OUTLINE({'x':output_box.data.range.x.span*0.5 + line_width*0.5,'y':s0+line_width*0.5}, section_width, -s1+line_width, '#ffb3d1', line_width); // RED
- output_box.TEXT('IM : ' + (IM).toFixed(0), {'x': val.x+5, 'y':(val.y+val.h*0.5)}, '#333');
-}
+ function DRAW_BOX(sector_name, sector_value, state, state_gdp, px, py, color_string, initial_sector_value) {
+   console.log(px);
+   let rect_h = sector_value/ZMAX*output_box.data.range.y.span-dx*2;
+   output_box.RECT_OUTLINE({'x':px,'y':py}, rect_w, -rect_h, color_string, dx*4); // BLUE
+   output_box.TEXT(sector_name + state + ' : ' + (sector_value).toFixed(0), {'x':px+dx*2, 'y':py + rect_h*0.5}, '#333', 12, 'Monospace');
+   
+   if (sector_name !== 'Y') {
+    output_box.TEXT('/Y' + state + ' : ' + ((sector_value/state_gdp)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h*0.5-3}, '#333', 12, 'Monospace');
+   }
+   
+   if (initial_sector_value) {
+    let shift = 6;
+    if (sector_name === 'Y') {
+      shift = 3;
+    }
+    output_box.TEXT('/' + sector_name + '1 : ' + ((sector_value/initial_sector_value)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h*0.5-shift}, '#333', 12, 'Monospace');
+   }
+   py += rect_h + dx*2;
+   return py;
+ } 
+};

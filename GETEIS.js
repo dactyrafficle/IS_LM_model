@@ -2,7 +2,7 @@ function GETEIS(obj, Y) {
 
   let output = {
    'e':null,
-   'i':obj.r, // r = r*
+   'r':obj.r, // r = r*
    'Y':Y,
    'exx':99999999999999
   }

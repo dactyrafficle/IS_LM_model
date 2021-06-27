@@ -2,7 +2,7 @@ function GETYIS(obj, e) {
 
   let output = {
    'e':e,
-   'i':obj.r,   // r = r*
+   'r':obj.r,   // r = r*, the IS curve depends on r, not i
    'Y':null,
    'exx':99999999999999
   }

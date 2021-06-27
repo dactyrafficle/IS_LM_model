@@ -23,7 +23,10 @@ function GET_INPUT_VALUES() {
    'epsilon': parseFloat(state_a_epsilon.value),
    'theta': parseFloat(state_a_theta.value),
    
-   'r': parseFloat(state_a_r.value)
+   'r':parseFloat(state_a_r.value),
+   'pi': parseFloat(state_a_pi.value),
+   'i': parseFloat(state_a_r.value) + parseFloat(state_a_pi.value)
+
   }
   
   let q = {
@@ -49,7 +52,9 @@ function GET_INPUT_VALUES() {
    'epsilon': parseFloat(state_b_epsilon.value),
    'theta': parseFloat(state_b_theta.value),
 
-   'r': parseFloat(state_b_r.value)
+   'r':parseFloat(state_b_r.value),
+   'pi': parseFloat(state_b_pi.value),
+   'i': parseFloat(state_b_r.value) + parseFloat(state_b_pi.value)
   }
 
   return {

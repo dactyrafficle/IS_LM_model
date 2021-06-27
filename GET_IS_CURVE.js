@@ -1,5 +1,5 @@
 function GET_IS_CURVE(obj) {
-
+  //console.log(obj);
   let de = 0.1;
   let output = new Array(b.data.range.x.max/de-1);
   let count = 0;

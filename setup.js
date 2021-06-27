@@ -8,6 +8,7 @@ window.addEventListener('load', function(e) {
  b.rangey(-5000, 45000);
 
  INPUT_VALUES = GET_INPUT_VALUES();
+ //console.log(INPUT_VALUES);
 
  IS_CURVES = {
   'a':GET_IS_CURVE(INPUT_VALUES.a),
@@ -45,34 +46,29 @@ window.addEventListener('load', function(e) {
 
 // use  ECONOMIC_OUTPUT to draw boxes
 
-let container_a = document.getElementById('economic-output-a');
-let container_b = document.getElementById('economic-output-b');
-let output_box_a = new Box();
-let output_box_b = new Box();
-container_a.appendChild(output_box_a.returnCanvas());
-container_b.appendChild(output_box_b.returnCanvas());
-
-output_box_a.border('1px solid #ddd');
-output_box_b.border('1px solid #ddd');
+let output_box_container = document.getElementById('economic-output');
+let output_box = new Box();
+output_box_container.appendChild(output_box.returnCanvas());
+output_box.border('1px solid #ddd');
 
 
-console.log(ECONOMIC_OUTPUT);
+//console.log(ECONOMIC_OUTPUT);
 let YMAX = 0;
 if ((ECONOMIC_OUTPUT.a.Y + ECONOMIC_OUTPUT.a.IM) > (ECONOMIC_OUTPUT.b.Y + ECONOMIC_OUTPUT.b.IM)) {
  YMAX = (ECONOMIC_OUTPUT.a.Y + ECONOMIC_OUTPUT.a.IM);
 } else {
  YMAX = (ECONOMIC_OUTPUT.b.Y + ECONOMIC_OUTPUT.b.IM);
 }
-
-UPDATE_OUTPUT_BOX(output_box_a, ECONOMIC_OUTPUT.a, YMAX);
-UPDATE_OUTPUT_BOX(output_box_b, ECONOMIC_OUTPUT.b, YMAX);
+console.log(ECONOMIC_OUTPUT);
+UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box, ECONOMIC_OUTPUT.a, ECONOMIC_OUTPUT.a.Y, YMAX);
 
 let myinputs = document.getElementsByClassName('myinputs');
 for (let i = 0; i < myinputs.length; i++) {
   myinputs[i].addEventListener('input', function(e) {
 
     INPUT_VALUES = GET_INPUT_VALUES();
-
+    console.log(INPUT_VALUES);
+    
     IS_CURVES = {
      'a':GET_IS_CURVE(INPUT_VALUES.a),
      'b':GET_IS_CURVE(INPUT_VALUES.b)
@@ -111,8 +107,7 @@ for (let i = 0; i < myinputs.length; i++) {
      YMAX = (ECONOMIC_OUTPUT.b.Y + ECONOMIC_OUTPUT.b.IM);
     }
 
-    UPDATE_OUTPUT_BOX(output_box_a, ECONOMIC_OUTPUT.a, YMAX);
-    UPDATE_OUTPUT_BOX(output_box_b, ECONOMIC_OUTPUT.b, YMAX);
+    UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box, ECONOMIC_OUTPUT.a, ECONOMIC_OUTPUT.a.Y, YMAX);
 
   });
 }
