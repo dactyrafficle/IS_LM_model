@@ -199,9 +199,11 @@
 </table>
 </div>
 
-<div class='sub-section'>
+<div class='' style='display: inline-block;'>
 
- <div class='section'>
+ <div class=''>
+ 
+ <div class='' style='display: inline-block;'>
  <table class='mytables'>
   <tr><td colspan='99'>FINANCIAL VARIABLES</td></tr>
   <tr><td>parameter</td><td>desc</td><td>before</td><td>after</td></tr>
@@ -212,23 +214,64 @@
    <td><input class='myinputs' id='state_b_i' disabled type='number' /></td>
   </tr>
   <tr>
+   <td>i*</td>
+   <td>Foreign nominal interest</td>
+   <td><input class='myinputs' id='state_a_i*' disabled type='number' /></td>
+   <td><input class='myinputs' id='state_b_i*' disabled type='number' /></td>
+  </tr>
+  <tr>
    <td>E[&pi;]</td>
    <td>Expected domestic inflation</td>
-   <td><input class='myinputs' id='state_a_pi' type='number' step=0.01 value='1' /></td>
-   <td><input class='myinputs' id='state_b_pi' type='number' step=0.01 value='1' /></td>
+   <td><input class='myinputs' id='state_a_pi' type='number' step=0.01 value='1.21' /></td>
+   <td><input class='myinputs' id='state_b_pi' type='number' step=0.01 value='1.21' /></td>
   </tr>
+  <tr>
+   <td>E[&pi;<sup>*</sup>]</td>
+   <td>Expected foreign inflation</td>
+   <td><input class='myinputs' id='state_a_pi*' disabled type='number' value='1.21' /></td>
+   <td><input class='myinputs' id='state_b_pi*' disabled type='number' value='1.21' /></td>
+  </tr>
+
   <tr>
    <td>r</td>
    <td>Domestic real interest</td>
-   <td><input class='myinputs' id='state_a_r' type='number' step=0.01 value='6' /></td>
-   <td><input class='myinputs' id='state_b_r' type='number' step=0.01 value='6' /></td>
+   <td><input class='myinputs' id='state_a_r' type='number' disabled step=0.01 value='6' /></td>
+   <td><input class='myinputs' id='state_b_r' type='number' disabled step=0.01 value='6' /></td>
   </tr>
   
   <tr>
    <td>r*</td>
    <td>Foreign real interest</td>
-   <td><input class='myinputs' id='' type='number' disabled step=0.01 value='6' /></td>
-   <td><input class='myinputs' id='' type='number' disabled step=0.01 value='6' /></td>
+   <td><input class='myinputs' id='state_a_r_world' type='number' step=0.01 value='6' /></td>
+   <td><input class='myinputs' id='state_b_r_world' type='number' step=0.01 value='6' /></td>
+  </tr>
+  
+
+  
+  <tr>
+   <td>e</td>
+   <td>Nominal exchange rate</td>
+   <td><input class='myinputs' id='state_a_e' disabled type='number' /></td>
+   <td><input class='myinputs' id='state_b_e' disabled type='number' /></td>
+  </tr>
+  <tr>
+   <td>e*</td>
+   <td>Nominal exchange rate</td>
+   <td><input class='myinputs' id='state_a_e*' disabled type='number' /></td>
+   <td><input class='myinputs' id='state_b_e*' disabled type='number' /></td>
+  </tr>
+  
+  <tr>
+   <td>E[&pi;<sup>e</sup>]</td>
+   <td>Expected currency appreciation</td>
+   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
+   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
+  </tr>
+  <tr>
+   <td>E[&pi;<sup>e*</sup>]</td>
+   <td>Expected currency appreciation</td>
+   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
+   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
   </tr>
   
   <tr>
@@ -239,56 +282,28 @@
   </tr>
   
   <tr>
-   <td>e</td>
-   <td>Nominal exchange rate</td>
-   <td><input class='myinputs' id='state_a_e' disabled type='number' /></td>
-   <td><input class='myinputs' id='state_b_e' disabled type='number' /></td>
-  </tr>
-  
-  
-  <tr>
    <td>Y</td>
    <td>Domestic GDP</td>
    <td><input class='myinputs' id='state_a_Y' disabled type='number' /></td>
    <td><input class='myinputs' id='state_b_Y' disabled type='number' /></td>
   </tr>
-  
-  <!-- going fancier -->
-  
-  <tr>
-   <td>i*</td>
-   <td>Foreign nominal interest</td>
-   <td><input class='myinputs' id='' disabled type='number' /></td>
-   <td><input class='myinputs' id='' disabled type='number' /></td>
-  </tr>
-  <tr>
-   <td>E[&pi;<sup>e</sup>]</td>
-   <td>Expected currency appreciation</td>
-   <td><input class='myinputs' id='' disabled type='number' value='0.021' /></td>
-   <td><input class='myinputs' id='' disabled type='number' value='0.021' /></td>
-  </tr>
-  <tr>
-   <td>E[&pi;<sup>*</sup>]</td>
-   <td>Expected foreign inflation</td>
-   <td><input class='myinputs' id='' disabled type='number' value='0.032' /></td>
-   <td><input class='myinputs' id='' disabled type='number' value='0.032' /></td>
-  </tr>
-  
-  
- </table>
-
- <table class='mytables'>
- <tr><td><a href='#real_interest_rate'>DEFINITION OF REAL INTEREST RATE</a></td><td><p><span class='math'>r = i - E[\pi] </span></p><p><span class='math'>r^* = i^* - E[\pi^*] </span></p></td></tr>
- <tr><td><a href='#uncovered_interest_parity'>FROM r=r*, <br> OR UNCOVERED INTEREST PARITY</a></td><td><span class='math'>i_t = i^*_t - E[\pi^e_{t+1}]</span></td></tr>
- <tr><td><a href='#purchasing_power_parity'>VIA PPP, epsilon=1</a></td><td><span class='math'>E[\pi^*] = E[\pi^e] + E[\pi] </span></td></tr>
- </table>
  
- <p> How to work this? if Epi goes up, either Epi* goes up, or Epie down taking i down. or some combination of both. </p>
- <p> usually u wanna say, if i change this, all else being equal, that happens, but here, its impossible to do that without more information... </p>
+ </table>
+ </div>
+ 
+ 
+ <div class='' style='display: inline-block; vertical-align: top;'>
+ <table class='mytables'>
+ <tr><td><a href='#real_interest_rate'>DEFINITION OF r</a></td><td><p><span class='math'>r = i - E[\pi] </span></p><p><span class='math'>r^* = i^* - E[\pi^*] </span></p></td></tr>
+ <tr><td><a href='#uncovered_interest_parity'>FROM r=r*, OR <br> UIRP </a></td><td><span class='math'>i = i^* - E[\pi^e]</span></td></tr>
+ <tr><td><a href='#purchasing_power_parity'>VIA PPP: &epsilon; =1</a></td><td><span class='math'>E[\pi^*] = E[\pi^e] + E[\pi] </span></td></tr>
+ </table>
  
  </div>
  
- <div class='section'>
+ </div>
+ 
+ <div class=''>
 
    <div id='box-container' class='sub-section'></div>
    <div class='sub-section'>
@@ -303,35 +318,23 @@
 
 <div class='section' id='real_interest_rate'>
 
- <h4> the interest rate, blanchard 292+ </h4>
+ <h4> The real interest rate </h4> <!-- blanchard p292+ showed a good way to look at it -->
  
  <ul>
-  <li> The real interest rate is what connect goods today, x_t, to goods tomorrow, <span class='math'>x_{t+1}</span></p>
-  <li><p><span class='math'>x_{t+1} = x_t(1+r_t)</span></p></li>
-  <li> Suppose you have x things.
-  <li> The price for one unit of x_t is p_t. So you have <span class='math'>m_t = x_tp_t</span> dollars. </li>
-  <li> You invest the money at interest rate i_t
-  <li> Next year, you have xp_t(1+i_t)
-  <li> You use that money to buy x. But the price has changed, and is now p_{t+1}
-  <li><p>So you can buy <span class='math'>x_{t+1} = \dfrac{x_tp_t(1+i_t)}{p_{t+1}}</span></p>
-  <li><p> So at t you had x, but at t+1 you can have <span class='math'>x_{t+1}</span></p>
-  <li><p>That means the real interest rate is <span class='math'>x_t(1+r_t) = x_{t+1}</span></p>
-  <li><p><span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{p_{t+1}}</span></p>
-  <li><p> But we don't know what <span class='math'>p_{t+1}</span> until t+1, so we have to use <span class='math'>E[p_{t+1}]</span>
+  <li><p> The real interest rate is what connects stuff today, <span class='math'>x_{t}</span>, to goods tomorrow, <span class='math'>x_{t+1}</span></p>
+  <li><p><span class='math'>x_{t+1} = x_t(1+r_t)</span>, which is a bit like the relative price of things today in terms of tmrw.</p></li>
+  <li><p>You can sell <span class='math'>x_{t}</span> today for <span class='math'>m_t = x_tp_t</span>, invest it at <span class='math'>i_{t}</span>, then use that amount of money <span class='math'>m_{t+1} = x_{t}p_t(1+i_t)</span> to buy goods at <span class='math'>p_{t+1}</span></p></li>
+  <li><p>You can buy <span class='math'>x_{t+1} = \dfrac{x_tp_t(1+i_t)}{p_{t+1}}</span></p>
+  <li><p>So if we define the real interest rate as <span class='math'>x_{t+1} = x_t(1+r_t)</span>, that means <span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{p_{t+1}}</span></p>
+  <li><p> But we don't know what <span class='math'>p_{t+1}</span> is yet, so we have to use <span class='math'>E[p_{t+1}]</span></p>
+  <li><p>Thus <span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{E[p_{t+1}]}</span>, and via <span class='math'>\pi_{t+1} = \dfrac{p_{t+1}}{p_t}</span>, we have : <span class='math outline'>r_t \approx i_t - E[\pi_{t+1}]</span></p>
  </ul>
- 
- <p><span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{E[p_{t+1}]}</span></p>
- <p><span class='math'>\pi_{t+1} = \dfrac{p_{t+1}}{p_t}</span></p>
- <p><span class='math'>1+r_t = (1+i_t) \cdot ( 1 + E[ \pi_{t+1} ] ) ^{-1}</span></p>
- 
- <p><span class='math outline'>r_t \approx i_t - E[\pi_{t+1}]</span></p>
 
-<h4> Why bother with this? </h4>
-
-<p> Companies invest based on the real interest rate, r, so I=I(Y,r)</p>
-
-<p> But money demand, L, is based on the nominal interest rate, i, so L=L(Y,i) </p>
+ <h4> Why bother with this? </h4>
  
+ <p> The way this model goes, companies invest based on the real interest rate, where <span class='math'>I=I(Y,r)</span>.</p>
+ <p> But real money demand is based on the nominal interest rate, where <span class='math'>L=L(Y,i)</span>.</p>
+
 </div>
 
 <div class='section'>

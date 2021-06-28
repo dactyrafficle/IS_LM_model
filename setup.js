@@ -3,12 +3,12 @@ window.addEventListener('load', function(e) {
  b = new Box("e", "Y");
  document.getElementById('box-container').appendChild(b.returnCanvas());
  b.border('1px solid #ddd');
- b.dimension(500, 500);
+ b.dimension(300, 300);
 
  output_box = new Box();
  document.getElementById('economic-output').appendChild(output_box.returnCanvas());
  output_box.border('1px solid #ddd');
- b.dimension(600, 600);
+ output_box.dimension(600, 600);
 
  INPUT_VALUES = GET_INPUT_VALUES();
 

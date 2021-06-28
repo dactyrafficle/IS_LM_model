@@ -10,6 +10,7 @@ function UPDATE_TABLE(ECONOMIC_OUTPUT) {
 
   document.getElementById('state_a_i').value = (ECONOMIC_OUTPUT.a.i).toFixed(2);
   document.getElementById('state_a_e').value = (ECONOMIC_OUTPUT.a.e).toFixed(2);
+  document.getElementById('state_a_e*').value = (1/ECONOMIC_OUTPUT.a.e).toFixed(2);
   document.getElementById('state_a_Y').value = (ECONOMIC_OUTPUT.a.Y).toFixed(2);
   
   // GET Y_LM
@@ -26,6 +27,7 @@ function UPDATE_TABLE(ECONOMIC_OUTPUT) {
   
   document.getElementById('state_b_i').value = (ECONOMIC_OUTPUT.b.i).toFixed(2);
   document.getElementById('state_b_e').value = (ECONOMIC_OUTPUT.b.e).toFixed(2);
+  document.getElementById('state_b_e*').value = (1/ECONOMIC_OUTPUT.b.e).toFixed(2);
   document.getElementById('state_b_Y').value = (ECONOMIC_OUTPUT.b.Y).toFixed(2);
   
   //document.getElementById('state_b_Y_LM').value = (ECONOMIC_OUTPUT.b.Y).toFixed(2);

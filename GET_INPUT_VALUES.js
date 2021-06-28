@@ -1,5 +1,14 @@
 function GET_INPUT_VALUES() {
 
+  document.getElementById('state_a_i*').value = (parseFloat(state_a_r.value) + parseFloat(state_a_pi.value)).toFixed(2);
+  document.getElementById('state_b_i*').value = (parseFloat(state_b_r.value) + parseFloat(state_b_pi.value)).toFixed(2);
+
+  document.getElementById('state_a_pi*').value = parseFloat(state_a_pi.value);
+  document.getElementById('state_b_pi*').value = parseFloat(state_b_pi.value);
+  
+  document.getElementById('state_a_r').value = (parseFloat(state_a_r_world.value)).toFixed(2);
+  document.getElementById('state_b_r').value = (parseFloat(state_b_r_world.value)).toFixed(2);
+  
   let a = {
    'c': parseFloat(state_a_c.value),
    't': parseFloat(state_a_t.value),
