@@ -1,5 +1,6 @@
 function GET_INPUT_VALUES() {
 
+/*
   document.getElementById('state_a_i*').value = (parseFloat(state_a_r.value) + parseFloat(state_a_pi.value)).toFixed(2);
   document.getElementById('state_b_i*').value = (parseFloat(state_b_r.value) + parseFloat(state_b_pi.value)).toFixed(2);
 
@@ -8,6 +9,7 @@ function GET_INPUT_VALUES() {
   
   document.getElementById('state_a_r').value = (parseFloat(state_a_r_world.value)).toFixed(2);
   document.getElementById('state_b_r').value = (parseFloat(state_b_r_world.value)).toFixed(2);
+*/
   
   let a = {
    'c': parseFloat(state_a_c.value),
@@ -28,7 +30,7 @@ function GET_INPUT_VALUES() {
 
    'M': parseFloat(state_a_M.value),
    'P': parseFloat(state_a_P.value),
-   'gamma': parseFloat(state_a_gamma.value),
+   'gamma': parseFloat(state_a_gamma.value), // L_0
    'epsilon': parseFloat(state_a_epsilon.value),
    'theta': parseFloat(state_a_theta.value),
    

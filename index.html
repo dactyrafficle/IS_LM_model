@@ -6,12 +6,12 @@
 <link rel="icon" href="index.png">
 
 <title> keynesian : is-lm model : SOE</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha384-t5CR+zwDAROtph0PXGte6ia8heboACF9R5l/DiY+WZ3P2lxNgvJkQk5n7GPvLMYw" crossorigin="anonymous">
 <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js" integrity="sha384-FaFLTlohFghEIZkw6VGwmf9ISTubWAVYW8tG8+w2LAIftJEULZABrF9PPFv+tVkH" crossorigin="anonymous"></script>
 <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js" integrity="sha384-bHBqxz8fokvgoJ/sc17HODNxa42TlaEhB+w8ZJXTc2nZf1VgEaFZeZvT4Mznfz0v" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-
 
 <script src='Box.js'></script>
 <script src='includes.js'></script>
@@ -27,32 +27,7 @@
 </style>
 </head>
 
-<!--
 
-<div class='section'>
-
- <h4>how to make i and e interact?</h4>
- <ul>
-  <li> put 2 economies side-by-side
-  <li> uncovered interest parity, add E[e]
-  <li> whatever mankiw used in ch8 appendix
- </ul>
- 
- <p> if there is any relationship between i and e, e = 100yen/$1 then the Y-r graph will be more complex, and e will not be constant along the lines - or is this just to show that the real exchange rate can be different. or that in a SOE i can change? and e will still change?</p>
-
- <ul>
-  <li><strong>2 economies</strong>
-   <ul>side by side? r* is just the prevailing rate. when we do sthing for r to go down, investment goes up (is that also foreign investment?) since money is cheap. but it also makes other countries bonds appealing, so to invest, we take our money, buy foreign currency to invest over there, but in the process, sell our currency, so our currency depreciates. </li>
-  <li> other countries want to invest here, and to do so, they need currency. savers have currency. so supply for dollars comes from foreign investors looking to take advantage of the low interest rates, for investment purposes. and the supply is from domestic savers, who want to take their money and put them in foreign assets to get better yields. </p>
-  <li> that action, the supply and demand of our currency against the foreign currency, that will determine how much e and i change. </li>
-  </ul>
- </ul>
-
- <p> show trade surplus, and gov deficit. </p>
-
-</div>
-
--->
 
 <div class='section'>
 <div class='sub-section'>
@@ -173,11 +148,11 @@
  </tr>
  <tr>
   <td><span>P</span></td>
-  <td><input class='myinputs' id='state_a_P' type='number' step=0.0001 value='1.03' /></td>
-  <td><input class='myinputs' id='state_b_P' type='number' step=0.0001 value='1.03' /></td>
+  <td><input class='myinputs' id='state_a_P' type='number' step=0.01 value='1.03' /></td>
+  <td><input class='myinputs' id='state_b_P' type='number' step=0.01 value='1.03' /></td>
  </tr>
  <tr>
-  <td><span>L_0 (gamma) : just a multiplier</span></td>
+  <td><span class='math'>L_0</span> (gamma) : just a multiplier</td>
   <td><input class='myinputs' id='state_a_gamma' type='number' step=0.01 value='3' /></td>
   <td><input class='myinputs' id='state_b_gamma' type='number' step=0.01 value='3' /></td>
  </tr>
@@ -190,6 +165,11 @@
   <td><span>&theta; : interest elasticity of L</span></td>
   <td><input class='myinputs' id='state_a_theta' type='number' step=0.01 value='4' /></td>
   <td><input class='myinputs' id='state_b_theta' type='number' step=0.01 value='4' /></td>
+ </tr>
+ <tr>
+  <td><span class='math'>L = L_0 \cdot \dfrac{Y^{\epsilon}}{i^{\theta}}</span></td>
+  <td><input class='myinputs' id='state_a_L' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_L' disabled type='number' /></td>
  </tr>
  <tr>
   <td><span class='math'>Y = \Big (\dfrac{1}{\gamma} \cdot \dfrac{M}{P} \Big )^{1/ \epsilon} \cdot i^{\theta / \epsilon}</span></td>
@@ -209,69 +189,30 @@
   <tr><td>parameter</td><td>desc</td><td>before</td><td>after</td></tr>
   <tr>
    <td>i</td>
-   <td>Domestic nominal interest</td>
+   <td>Nominal interest</td>
    <td><input class='myinputs' id='state_a_i' disabled type='number' /></td>
    <td><input class='myinputs' id='state_b_i' disabled type='number' /></td>
   </tr>
-  <tr>
-   <td>i*</td>
-   <td>Foreign nominal interest</td>
-   <td><input class='myinputs' id='state_a_i*' disabled type='number' /></td>
-   <td><input class='myinputs' id='state_b_i*' disabled type='number' /></td>
-  </tr>
+
   <tr>
    <td>E[&pi;]</td>
-   <td>Expected domestic inflation</td>
+   <td>Expected inflation</td>
    <td><input class='myinputs' id='state_a_pi' type='number' step=0.01 value='1.21' /></td>
    <td><input class='myinputs' id='state_b_pi' type='number' step=0.01 value='1.21' /></td>
   </tr>
-  <tr>
-   <td>E[&pi;<sup>*</sup>]</td>
-   <td>Expected foreign inflation</td>
-   <td><input class='myinputs' id='state_a_pi*' disabled type='number' value='1.21' /></td>
-   <td><input class='myinputs' id='state_b_pi*' disabled type='number' value='1.21' /></td>
-  </tr>
-
-  <tr>
-   <td>r</td>
-   <td>Domestic real interest</td>
-   <td><input class='myinputs' id='state_a_r' type='number' disabled step=0.01 value='6' /></td>
-   <td><input class='myinputs' id='state_b_r' type='number' disabled step=0.01 value='6' /></td>
-  </tr>
   
   <tr>
-   <td>r*</td>
-   <td>Foreign real interest</td>
-   <td><input class='myinputs' id='state_a_r_world' type='number' step=0.01 value='6' /></td>
-   <td><input class='myinputs' id='state_b_r_world' type='number' step=0.01 value='6' /></td>
+   <td>r = r*</td>
+   <td>Real interest rate</td>
+   <td><input class='myinputs' id='state_a_r' type='number' step=0.01 value='6' /></td>
+   <td><input class='myinputs' id='state_b_r' type='number' step=0.01 value='6' /></td>
   </tr>
-  
-
   
   <tr>
    <td>e</td>
    <td>Nominal exchange rate</td>
    <td><input class='myinputs' id='state_a_e' disabled type='number' /></td>
    <td><input class='myinputs' id='state_b_e' disabled type='number' /></td>
-  </tr>
-  <tr>
-   <td>e*</td>
-   <td>Nominal exchange rate</td>
-   <td><input class='myinputs' id='state_a_e*' disabled type='number' /></td>
-   <td><input class='myinputs' id='state_b_e*' disabled type='number' /></td>
-  </tr>
-  
-  <tr>
-   <td>E[&pi;<sup>e</sup>]</td>
-   <td>Expected currency appreciation</td>
-   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
-   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
-  </tr>
-  <tr>
-   <td>E[&pi;<sup>e*</sup>]</td>
-   <td>Expected currency appreciation</td>
-   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
-   <td><input class='myinputs' id='' disabled type='number' value='0' /></td>
   </tr>
   
   <tr>
@@ -291,21 +232,39 @@
  </table>
  </div>
  
- 
- <div class='' style='display: inline-block; vertical-align: top;'>
- <table class='mytables'>
- <tr><td><a href='#real_interest_rate'>DEFINITION OF r</a></td><td><p><span class='math'>r = i - E[\pi] </span></p><p><span class='math'>r^* = i^* - E[\pi^*] </span></p></td></tr>
- <tr><td><a href='#uncovered_interest_parity'>FROM r=r*, OR <br> UIRP </a></td><td><span class='math'>i = i^* - E[\pi^e]</span></td></tr>
- <tr><td><a href='#purchasing_power_parity'>VIA PPP: &epsilon; =1</a></td><td><span class='math'>E[\pi^*] = E[\pi^e] + E[\pi] </span></td></tr>
- </table>
- 
- </div>
+
  
  </div>
  
  <div class=''>
-
-   <div id='box-container' class='sub-section'></div>
+ 
+    <table>
+    
+      <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><p>MONEY MARKET<p><p>LN makes it easier to look at, AND CALCULATE</p></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'>
+        <td>LN of Nominal Interest</td>
+        <td><div id='lm-box-container' class='sub-section'></div></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN of Real Money</td></tr>
+    
+    </table>
+ 
+    <table>
+    
+      <tr style='text-align: center; font-weight: bold;'>
+        <td>IMPORT/EXPORT</td>
+        <td>IS-LM</td>
+      </tr>
+      <tr>
+        <td><div id='nx-box-container' class='sub-section'></div></td> 
+        <td><div id='box-container' class='sub-section'></div></td>
+      </tr>
+    
+    </table>
+    
    <div class='sub-section'>
     <div class='sub-section' id='economic-output' style='vertical-align: bottom;'></div>
    </div>
@@ -315,57 +274,6 @@
 </div>
 
 </div>
-
-<div class='section' id='real_interest_rate'>
-
- <h4> The real interest rate </h4> <!-- blanchard p292+ showed a good way to look at it -->
- 
- <ul>
-  <li><p> The real interest rate is what connects stuff today, <span class='math'>x_{t}</span>, to goods tomorrow, <span class='math'>x_{t+1}</span></p>
-  <li><p><span class='math'>x_{t+1} = x_t(1+r_t)</span>, which is a bit like the relative price of things today in terms of tmrw.</p></li>
-  <li><p>You can sell <span class='math'>x_{t}</span> today for <span class='math'>m_t = x_tp_t</span>, invest it at <span class='math'>i_{t}</span>, then use that amount of money <span class='math'>m_{t+1} = x_{t}p_t(1+i_t)</span> to buy goods at <span class='math'>p_{t+1}</span></p></li>
-  <li><p>You can buy <span class='math'>x_{t+1} = \dfrac{x_tp_t(1+i_t)}{p_{t+1}}</span></p>
-  <li><p>So if we define the real interest rate as <span class='math'>x_{t+1} = x_t(1+r_t)</span>, that means <span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{p_{t+1}}</span></p>
-  <li><p> But we don't know what <span class='math'>p_{t+1}</span> is yet, so we have to use <span class='math'>E[p_{t+1}]</span></p>
-  <li><p>Thus <span class='math'>1+r_t = (1+i_t) \cdot \dfrac{p_t}{E[p_{t+1}]}</span>, and via <span class='math'>\pi_{t+1} = \dfrac{p_{t+1}}{p_t}</span>, we have : <span class='math outline'>r_t \approx i_t - E[\pi_{t+1}]</span></p>
- </ul>
-
- <h4> Why bother with this? </h4>
- 
- <p> The way this model goes, companies invest based on the real interest rate, where <span class='math'>I=I(Y,r)</span>.</p>
- <p> But real money demand is based on the nominal interest rate, where <span class='math'>L=L(Y,i)</span>.</p>
-
-</div>
-
-<div class='section'>
-
- <h4> monetary expansion </h4>
- 
- <p> shifts the LM curve, so the exchange rate equilibrates. </p>
- 
- <p> M up, Y up, e down, X up and IM down. </p>
- 
- <p> the thinking is that a sudden monetary expansion does not change expected inflation. At least not immediately. Because if it did, M up would make ppl think inflation is gonna happen </p>
- 
- <p> that can get a bit hairy. does i go up? causing even more money demand? or does i stay the same, and a change in Epi just make r down? that would offset some of the expansion effects. but that isn't the world interest rate that falls. that's where it gets complicated. because now r != r* which should flood money into the domestic economy, raising demand for the domestic money, causing e to go up, pushing X down and IM up, which would then offset the entire impact. Well, that would depend on how much Epi changed.</p>
- 
- <h4> r* up </h4>
- 
- <p> when r goes up, it shifts the LM curve up (Y up) : e down, X up, IM down. </p>
- 
- <h4> fiscal expansion </h4>
- 
- <p> G up shifts the IS curve, but Y does not change. e goes up, X down, IM up. </p>
- <p> In this extreme case, the change in NX totally offsets the increase in G. </p>
- 
- <h4> fiscal + monetary </h4>
- 
- <p> both together? probably pretty good? </p>
-
-</div>
-
-<!-- <div class='sub-section' id='inputs-a'></div> -->
-
 
 <script src='GET_INPUT_VALUES.js'></script>
 <script src='UPDATE_TABLE.js'></script>
@@ -408,172 +316,23 @@ let ECONOMIC_OUTPUT = {
 
 </script>
 
-<div class='section' id='purchasing_power_parity'>
-
- <h4> PURCHASING POWER PARITY </h4>
- 
- <p>assumption of parity : <span class='math'>\epsilon = \dfrac{eP}{P^*} = 1</span></p>
- 
- <p> that means </p>
- 
- <p><span class='math'>\epsilon_t = \dfrac{e_tp_t}{p^*_t} = 1</p>
- <p><span class='math'>\epsilon_{t+1} = \dfrac{e_{t+1}p_{t+1}}{p^*_{t+1}} = 1</p>
- 
-  <p><span class='math'>\dfrac{e_tp_t}{p^*_t} = \dfrac{e_{t+1}p_{t+1}}{p^*_{t+1}}</p>
-  
-    <p><span class='math'>\pi^*_{t+1} \approx \pi^e_{t+1} + \pi_{t+1} </span>
-    <p><span class='math'>E[\pi^*] \approx E[\pi^e] + E[\pi] </span>
- 
-
- <h4> idea behind the uncovered interest partity, blanchard p115 </h4>
- 
- <p> you can invest $1 today domestically at the domestic rate, and get (1+i) in one year </p>
- 
- <p> or you can take that $1, buy $e ($1 x e foreign/domestic) foreign currency, get i+i* interest yielding e(i+i*), but then you have to sell that back to domestic currency at e_{t+1}, so you get $$\dfrac{e_t(1+i^*)}{e_{t+1}}$$. But you don't know what next year's exchange rate will be so you guess. </p> 
- 
- $$\dfrac{e_t(1+i^*)}{E[e_{t+1}]}$$
- 
- <p> Anyhow, those are your 2 options:
-  <ul>
-   <li><p> buy domestic bonds </p>
-   <li><p> buy foreign bonds </p>
-  </ul>
-  
-<table class='mytables'>
- <tr>
-  <td>STUFF TODAY</td>
-  <td>sell for money @ $$p_t$$</td>
-  <td>exchange for foreign currency @ $$e_t$$</td>
-  <td>invest domestically @ $$i_t$$</td>
-  <td>invest somewhere else @ $$i^*_t$$</td>
-  <td>exchange for domestic currency @ $$e_{t+1}$$</td>
-  <td>compare domestic money holdings</td>
-  <td>buy stuff @ $$p_{t+1}$$</td>
-  <td>rate of return @ $$\dfrac{x_{t+1}}{x_t}$$ </td>
-  <td>is approx</td>
- <tr>
- <tr>
-  <td>$$x_t$$</td>
-  <td>$$m_t=x_tp_t$$</td>
-  <td></td>
-  <td>$$m_{t+1}=x_tp_t(1+i_t)$$</td>
-  <td></td>
-  <td></td>
-  <td>$$m_{t+1}=x_tp_t(1+i_t)$$</td>
-  <td>$$x_{t+1}=\dfrac{x_tp_t(1+i_t)}{p_{t+1}}$$</td>
-  <td>$$1+r_t = \dfrac{p_t(1+i_t)}{p_{t+1}}$$</td>
-  <td>$$r_t \approx i_t - \pi_{t+1}$$</td>
- <tr>
- <tr>
-  <td>$$x_t$$</td>
-  <td>$$m_t=x_tp_t$$</td>
-  <td>$$m^*_t=x_tp_te_t$$</td>
-  <td></td>
-  <td>$$m^*_{t+1}=x_tp_te_t(1+i^*_t)$$</td>
-  <td>$$m_{t+1}=\dfrac{x_tp_te_t(1+i^*_t)}{e_{t+1}}$$</td>
-  <td>$$m_{t+1}=\dfrac{x_tp_te_t(1+i^*_t)}{e_{t+1}}$$</td>
-  <td>$$x_{t+1}=\dfrac{x_tp_te_t(1+i^*_t)}{p_{t+1}e_{t+1}}$$</td>
-  <td>$$1+r^*_t = \dfrac{p_te_t(1+i^*_t)}{p_{t+1}e_{t+1}}$$</td>
-  <td>$$r_t^* = i^*_t - \pi_{t+1} - \pi^e_{t+1}$$</td>
- <tr>
-</table>
- 
- 
-</div>
-
-<div class='section' id='uncovered_interest_parity'>
- 
- <h4> when r = r^*, and the uncovered interest parity condition </h4>
- 
- <p><span class='math'>i_t - \pi_{t+1} = i^*_t - \pi_{t+1} - \pi^e_{t+1}</span></p>
- <p><span class='math'>i_t = i^*_t - \pi^e_{t+1}</span></p>
- <p> I think it makes sense to assume that currency appreciation is just an external thing. And won't change so fast. </p>
-
-
- <h4> what if E[e_{t+1]] = e_t ? </h4>
- 
- <p> then i = i* and interest and exchange are not related. in that case, i=i* means Y and e equilibrate the whole economy. </p>
- 
- <p> what if 2 countries have different expectations about the exchange rate? </p>
- 
-<h4>uncovered interest rate parity</h4>
-
-<p><span class='math'>1+i_d = (1 + i_f) \cdot \dfrac{e_t}{E[e_{t+1}]} </span></p>
- 
- 
- <p>mankiw used sthing called purchasing power parity: that eP/P*=1, which i dont think blanchard uses </p>
-<p> e is the number of Yen I can get for a $ . its the price of $ in yen</p>
-
-<p> i and e move together generally </p>
-
-<p> in the is-lm-fx model, if the eurozone increase their interest rate, it causes the us interest rate to rise. </p>
-
-
-
-</div>
 
 <div class='section'>
 
- <h4> open markets </h4>
- 
- <p> Open financial markets is what lets a country do trade surpluses / deficits (total spending Z can exceed Y, or the reverse). </p>
- 
-In order to pay for the difference between what it buys and what it sells, the country
-must borrow from the rest of the world
-It borrows by making it attractive for foreign financial investors to increase their holdings of domestic assets – in effect, to lend to the country
+  <h4> Overview </h4>
+  <p> A short term equilibrium is the solution to the following :</p>
 
-<p> to the consumer, the choice is between holding domestic currency, domestic bonds, foreign currency, and foreign bonds</p>
-
-<p>but there isn't much motive to hold foreign currency, for the most part, for most ppl</p>
-
-<p>so they have to pick between domestic and foreign bonds</p>
-
-<p> what if E[e_{t+1}] = e_t ? then i = i*, and its a SOE, where the exchange rate equilibrates along with Y, and then e and r are not related...</p>
-
-</div>
-
-<div class='section'>
-
- <h4> Overview </h4>
- <p> A short term equilibrium is the solution to the following 2 equations :</p>
- 
- <table class='mytables'>
-  <tr><td>IS curve : goods </td><td><span class='math'>Z = C(Y,T) + I(Y,r) + G + X(Y^*,e) - IM(Y,e)</span></td></tr>
-  <tr><td>LM curve : money market</td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td></tr>
-  <tr><td>equilibrium condition:</td><td><span class='math'>Z=Y</span></td></tr>
-  <tr><td>SOE</td><td><span class='math'>r=r^*</span></td></tr>
-  <tr><td>PPP</td><td><span class='math'>\epsilon = 1</span><td></tr>
- </table>
-
- <h4> Comments </h4>
- <p> This model is for the short term. </p>
- <p> The idea here is the the IS curve establishes Y, r, e </p>
- <p> The LM curve maps maps how much money people need to buy the things they want</p>
- <p> Sticky prices : wages and prices are fixed to reflect the fact that they do not adjust quickly</p>
+  <table class='mytables'>
+    <tr><td>IS curve </td><td><span class='math'>Z = C(Y,T) + I(Y,r) + G + X(Y^*,e) - IM(Y,e)</span></td></tr>
+    <tr><td>LM curve </td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td></tr>
+    <tr><td>Equilibrium condition:</td><td><span class='math'>Z=Y</span></td></tr>
+    <tr><td>SOE</td><td><span class='math'>r=r^*</span></td></tr>
+    <tr><td>PPP</td><td><span class='math'>\epsilon = 1</span><td></tr>
+  </table>
 
 </div>
 
 
-<div class='section'>
-
- <h4> Comment on elasticities </h4>
-
- <p><span class='math'>y=x^a</span></p>
- <p> 
- <p><span class='math'>\dfrac{\Delta y/y}{\Delta x/x} = \dfrac{\Delta y}{\Delta x} \cdot \dfrac{x}{y} </span></p>
- <p><span class='math'>\dfrac{dy}{dx}=ax^{a-1}=\dfrac{ax^a}{x}=\dfrac{ay}{x}</span></p>
- <p><span class='math'>\dfrac{\Delta y/y}{\Delta x/x} = \dfrac{\Delta y}{\Delta x} \cdot \dfrac{x}{y} =  \dfrac{dy}{dx} \cdot \dfrac{x}{y} = \dfrac{ay}{x} \cdot \dfrac{x}{y} = a</span></p>
- 
- <p> The x-elasticity of y is a. </p>
- 
- <p><span class='math'>\dfrac{\Delta y/y}{\Delta x/x} = a</span></p>
- 
- <p> If <span class='math'>\frac{\Delta x}{x} = 0.01</span>, then <span class='math'>\dfrac{\Delta y/y}{0.01} = a</span> so that <span class='math'>\frac{\Delta y}{y} = a \cdot 0.01 </span></p>
- 
- <p> So a 1% change in x makes an a% change in y.</p>
- 
-</div>
- 
 
 
 

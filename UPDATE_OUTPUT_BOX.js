@@ -57,6 +57,7 @@ function UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box) {
     output_box.TEXT('/Y' + state + ' : ' + ((sector_value/state_gdp)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h-6}, '#333', 12, 'Monospace');
    }
    
+   
    if (initial_sector_value) {
     let shift = 9;
     if (sector_name === 'Y') {
@@ -64,6 +65,18 @@ function UPDATE_OUTPUT_BOX(ECONOMIC_OUTPUT, output_box) {
     }
     output_box.TEXT('/' + sector_name + '1 : ' + ((sector_value/initial_sector_value)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h-shift}, '#333', 12, 'Monospace');
    }
+   
+   /*
+   let sign = '-';
+   if (sector_value >= initial_sector_value) {
+     sign = '+';
+   }
+   
+  if (initial_sector_value) {
+    output_box.TEXT(sign + ' ' + (((sector_value/initial_sector_value)-1)*100).toFixed(2) + '%', {'x':px+dx*2, 'y': py + rect_h/2}, '#333', 12, 'Monospace');
+  }
+   */
+   
    py += rect_h + dx*2;
    return py;
  } 

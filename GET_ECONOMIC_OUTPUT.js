@@ -15,6 +15,7 @@ function GET_ECONOMIC_OUTPUT(INPUT_VALUE, SOLUTION) {
  output.pi = INPUT_VALUE.pi;
  output.e = SOLUTION.e;
  output.Y = SOLUTION.Y;
+ output.L = INPUT_VALUE.gamma*SOLUTION.Y**INPUT_VALUE.epsilon/INPUT_VALUE.i**INPUT_VALUE.theta;
  
  output.exx = SOLUTION.exx;
  output.INPUT_VALUE = INPUT_VALUE;
