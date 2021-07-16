@@ -236,7 +236,7 @@
         <td><p>MONEY MARKET<p></td>
       </tr>
       <tr style='text-align: center; font-weight: bold;'>
-        <td>LN(i)</td>
+        <td></td>
         <td><div id='lm-box-container'></div></td>
       </tr>
       <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(M/P)</td></tr>
@@ -244,34 +244,33 @@
   </div>
   
  <div style='display: inline-block; vertical-align: top;'>
-    <table id='graph-international-trade'>
-      <tr style='text-align: center; font-weight: bold;'>
-        <td></td>
-        <td><p>INTERNATIONAL TRADE<p></td>
-      </tr>
-      <tr style='text-align: center; font-weight: bold;'>
-        <td>LN($)</td>
-        <td><div id='nx-box-container'></div></td>
-      </tr>
-      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(e)</td></tr>
-    </table>
- </div>
-
-
- <div style='display: inline-block; vertical-align: top;'>
     <table id='graph-is-lm'>
       <tr style='text-align: center; font-weight: bold;'>
         <td></td>
         <td><p>IS-LM<p></td>
       </tr>
       <tr style='text-align: center; font-weight: bold;'>
-        <td>LN(Y)</td>
+        <td></td>
         <td><div id='is-lm-box-container'></div></td>
       </tr>
       <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(e)</td></tr>
     </table>
  </div>
-  
+ 
+ <div style='display: inline-block; vertical-align: top;'>
+    <table id='graph-international-trade'>
+      <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><p>INTERNATIONAL TRADE<p></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><div id='nx-box-container'></div></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(e)</td></tr>
+    </table>
+ </div>
+ 
 </div>
 
 </div> <!-- closing section -->
@@ -319,12 +318,11 @@
     <tr><td>SOE</td><td><span class='math'>r=r^*</span></td></tr>
     <tr><td>PPP</td><td><span class='math'>\epsilon = 1</span></td></tr>
   </table>
+</div>
 
-  <p> finish the 3 graphs </p>
-  <p> The international trade graph is surprizingly complex, because you can't just change e and plug it to get NX. If you change e, Y changes. That makes C, I and IM change. </p>
-  
-  <p> graph the overall economy - output boxes </p>
-  <p> graph the newton-raphson approx im using </p>
+<div class='section'>
+
+  <h4> Solution </h4>
 
   <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}e^{\sigma}-IM_0Y^{\nu}e^{\tau}</span></p>
 
@@ -332,16 +330,14 @@
   
   <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}s^{\sigma}-M_0Y^{\nu}s^{\tau}</span></p>
 
-  <h4> Solving for s </h4>
+  <h4> Solving for s, given Y </h4>
 
   <p> Solving for s is easy enough. </p>
   
   <p><span class='math'>\dfrac{Y-cY+ctY - G - I_0Y^{\kappa}r^{\lambda}}{M_0Y^{\nu}} = \dfrac{X_0Y_f^{\rho}}{M_0Y^{\nu}}s^{\sigma}-s^{\tau}</span></p>
 
   <p> While I do not know how to solve for s algabraically, I used to newton raphson method to do it numerically. </p>
-  
-  <p> Should I know how to solve it? </p>
-  
+
   <ul>
     <li><p><span class='math'>q = \dfrac{Y-cY+ctY - G - I_0Y^{\kappa}r^{\lambda}}{M_0Y^{\nu}}</span></p>
     <li><p><span class='math'>a = \dfrac{X_0Y_f^{\rho}}{M_0Y^{\nu}}</span></p>
@@ -351,11 +347,7 @@
   <p><span class='math'>q = a s^{\sigma}-s^{\tau}</span></p>
   <p><span class='math'>f(x) = x^m - ax + q = 0</span></p>
 
-  <p> Is the approach I've used sensible? I do not have any experience with this equation, and it causes pain somewhere inside my head where, it is rumored, is a brain, which, so far as I can tell, does mostly nothing. </p>
-
   <h4> Solving for Y, given s </h4>
-
-  <p> Not so easy. </p>
   
   <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}s^{\sigma}-M_0Y^{\nu}s^{\tau}</span></p>
   
@@ -363,11 +355,9 @@
   
   <p><span class='math'>\alpha Y + \beta Y^{\nu} - \gamma Y^{\kappa} = h </span></p>
   
-  <p>If I lived to be 1000 years old I would not know where to begin here. </p>
-  
   <p><span class='math'>f(Y) = \alpha Y + \beta Y^{\nu} - \gamma Y^{\kappa} - h = 0 </span></p>
   
-  <p>So I just resort to NR and hope it works. </p>
+  <p> It's the same as above : can't do it math-wise so a numerical solution is all I can do. </p>
   
 </div>
 

@@ -33,17 +33,19 @@ function UPDATE_IS_LM_GRAPH(box, OUTPUT_VALUES) {
     b_arr.push({'x':i,'y':Math.log(SOLVE_Y_GIVEN_E(s, OUTPUT_VALUES.b).Y)})
   }
 
-  box.CONNECTVALUES2(a_arr, '#fc08', 2);
+  // THE IS CURVE
+  box.CONNECTVALUES2(a_arr, '#fc05', 2);
   box.CONNECTVALUES2(b_arr, '#adc2eb', 1);
 
-
-  // THE EXCHANGE RATES
-  box.CONNECTVALUES2([{'x':p0.a.x,'y':box.data.range.y.min},{'x':p0.a.x,'y':box.data.range.y.max}],'#ddd', 2);
-  box.CONNECTVALUES2([{'x':p0.b.x,'y':box.data.range.y.min},{'x':p0.b.x,'y':box.data.range.y.max}],'#ddd', 2);
+  // THE LM CURVE
+  box.CONNECTVALUES2([{'x':box.data.range.x.min,'y':p0.a.y},{'x':box.data.range.x.max,'y':p0.a.y}],'#fc05', 2);
+  box.CONNECTVALUES2([{'x':box.data.range.x.min,'y':p0.b.y},{'x':box.data.range.x.max,'y':p0.b.y}],'#adc2eb', 1);
   
-  // GDP
-  box.CONNECTVALUES2([{'x':box.data.range.x.min,'y':p0.a.y},{'x':box.data.range.x.max,'y':p0.a.y}],'#ddd', 2);
-  box.CONNECTVALUES2([{'x':box.data.range.x.min,'y':p0.b.y},{'x':box.data.range.x.max,'y':p0.b.y}],'#ddd', 2);
+  // THE EXCHANGE RATES
+  box.CONNECTVALUES2([{'x':p0.a.x,'y':box.data.range.y.min},{'x':p0.a.x,'y':p0.a.y}],'#ddd', 2);
+  box.CONNECTVALUES2([{'x':p0.b.x,'y':box.data.range.y.min},{'x':p0.b.x,'y':p0.b.y}],'#ddd', 2);
+  
+
 
   // SHOW POINTS
   box.SHOWVALUE(p0.a, '#FC0', 3);

@@ -8,7 +8,7 @@ window.addEventListener('load', function(e) {
 
   let s_box = 390;
 
-  b_is_lm = new Box("e", "Y");
+  b_is_lm = new Box("e", "LN(Y)");
   document.getElementById('is-lm-box-container').appendChild(b_is_lm.returnCanvas());
   b_is_lm.border('1px solid #ddd');
   b_is_lm.dimension(s_box, s_box);
