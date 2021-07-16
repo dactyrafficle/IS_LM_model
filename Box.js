@@ -47,7 +47,7 @@ Box.prototype.recenter = function(val) {
   let spany = this.data.range.y.span;
   this.rangex(val.x-spanx/2, val.x+spanx/2);
   this.rangey(val.y-spany/2, val.y+spany/2);
-  console.log(this);
+  //console.log(this);
   // BUT I NEED TO RECALC EVERYTHING
   //this.clear();
   //this.SHOW_GRID_X(1);
@@ -214,9 +214,8 @@ Box.prototype.SHOW_GRID_Y = function(dy, color_string) {
   i++;
  }
 };
-Box.prototype.SHOW_FLOATING_LOG_Y_AXIS = function() {
+Box.prototype.SHOW_FLOATING_LOG_Y_AXIS = function(n) {
 
- let n = 9;
  let sh = this.data.dimension.h/n;
  let sw = this.data.dimension.w/n;
  
@@ -240,7 +239,6 @@ Box.prototype.SHOW_FLOATING_LOG_Y_AXIS = function() {
   this.ctx.fillStyle = '#333';
   this.ctx.textAlign = 'left';
   this.ctx.textBaseline = 'middle';
-  //this.ctx.fillText((Math.E**v0.y).toFixed(2), p0.x+2*dsw, p0.y);
   this.ctx.fillText((v0.y).toFixed(2), p0.x+2*dsw, p0.y);
   this.ctx.stroke();
   this.CONNECTVALUES(v0, v1, '#333', 0.5); 
@@ -250,12 +248,52 @@ Box.prototype.SHOW_FLOATING_LOG_Y_AXIS = function() {
  this.ctx.textBaseline = 'top';
  this.ctx.fillText((this.data.label.y), sw, sh*(n2+0.25));
 };
+Box.prototype.SHOW_FLOATING_Y_AXIS = function(n) {
 
-Box.prototype.SHOW_FLOATING_LOG_X_AXIS = function() {
-
- let n = 9;
- let sh = this.data.dimension.h - this.data.dimension.h/n;
+ let sh = this.data.dimension.h/n;
  let sw = this.data.dimension.w/n;
+ 
+ let n1 = 2;
+ let n2 = n-n1;
+ 
+ let p0 = {'x':sw,'y':sh*n1};
+ let p1 = {'x':sw,'y':sh*n2};
+
+ let v0 = this.PIXEL2VAL(p0);
+ let v1 = this.PIXEL2VAL(p1);
+ 
+ this.CONNECTVALUES(v0, v1, '#333', 0.5);
+ 
+ let dsw = 5;
+ for (let i = n1; i <= n2; i++) {
+  let p0 = {'x':sw-dsw,'y':sh*i};
+  let p1 = {'x':sw+dsw,'y':sh*i};
+  let v0 = this.PIXEL2VAL(p0);
+  let v1 = this.PIXEL2VAL(p1);
+  this.ctx.fillStyle = '#333';
+  this.ctx.textAlign = 'left';
+  this.ctx.textBaseline = 'middle';
+  this.ctx.fillText((v0.y).toFixed(0), p0.x+2*dsw, p0.y);
+  this.ctx.stroke();
+  this.CONNECTVALUES(v0, v1, '#333', 0.5); 
+ }
+ 
+ this.ctx.textAlign = 'center';
+ this.ctx.textBaseline = 'top';
+ this.ctx.fillText((this.data.label.y), sw, sh*(n2+0.25));
+};
+Box.prototype.SHOW_FLOATING_LOG_X_AXIS = function(n, y_val) {
+
+  let sh;
+  if (arguments[1] && arguments[1] !== null) {
+    let v3 = {'x':0,'y':y_val};
+    let p3 = this.VAL2PIXEL(v3);
+    sh = p3.y;
+  } else {
+    sh = this.data.dimension.h*(n-1)/n;
+  }
+  let sw = this.data.dimension.w/n;
+  //console.log(sh);
  
  let n1 = 2;
  let n2 = n-n1;
@@ -277,7 +315,6 @@ Box.prototype.SHOW_FLOATING_LOG_X_AXIS = function() {
   this.ctx.fillStyle = '#333';
   this.ctx.textAlign = 'center';
   this.ctx.textBaseline = 'top';
-  //this.ctx.fillText((Math.E**v0.x).toFixed(2), p0.x, p0.y+1*dsh);
   this.ctx.fillText((v0.x).toFixed(2), p0.x, p0.y+1*dsh);
   this.ctx.stroke();
   this.CONNECTVALUES(v0, v1, '#333', 0.5); 
@@ -285,14 +322,23 @@ Box.prototype.SHOW_FLOATING_LOG_X_AXIS = function() {
 
  this.ctx.textAlign = 'right';
  this.ctx.textBaseline = 'middle';
- this.ctx.fillText((this.data.label.x).toUpperCase(), sw*(n1-0.25), sh);
+ this.ctx.fillText((this.data.label.x), sw*(n1-0.25), sh);
 
 };
 
-Box.prototype.SHOW_FLOATING_X_AXIS = function(n) {
+Box.prototype.SHOW_FLOATING_X_AXIS = function(n, y_val) {
 
  //let n = 9;
- let sh = this.data.dimension.h - this.data.dimension.h/n;
+ let sh;
+ if (arguments[1] !== null) {
+   let v3 = {'x':0,'y':y_val};
+   //console.log(v3);
+   let p3 = this.VAL2PIXEL(v3);
+   //console.log(p3);
+   sh = p3.y;
+ } else {
+  sh = this.data.dimension.h - this.data.dimension.h/n;
+ }
  let sw = this.data.dimension.w/n;
  
  let n1 = 1;
@@ -315,7 +361,7 @@ Box.prototype.SHOW_FLOATING_X_AXIS = function(n) {
   this.ctx.fillStyle = '#333';
   this.ctx.textAlign = 'center';
   this.ctx.textBaseline = 'top';
-  this.ctx.fillText(v0.x.toFixed(2), p0.x, p0.y+1*dsh);
+  this.ctx.fillText(v0.x.toFixed(0), p0.x, p0.y+1*dsh);
   this.ctx.stroke();
   this.CONNECTVALUES(v0, v1, '#333', 0.5); 
  }
@@ -529,6 +575,31 @@ Box.prototype.DRAW_HISTOGRAM = function(obj) {
     //console.log('this');
     this.RECT_OUTLINE({'x':i*bin_width,'y':0}, bin_width, -obj.data[i].count, '#aaa', 1); 
   }
+
+  
+}
+
+Box.prototype.RESCALE_BASED_ON_CM = function(alpha, x_scale_min, y_scale_min, VERTICES) {
+
+  let cx = alpha*VERTICES[0].x + (1-alpha)*VERTICES[1].x;
+  let cy = alpha*VERTICES[0].y + (1-alpha)*VERTICES[1].y;
+  
+  let dx = Math.abs(VERTICES[0].x - VERTICES[1].x);
+  let dy = Math.abs(VERTICES[0].y - VERTICES[1].y);
+  
+ // if (VERTICES[0].x == VERTICES[1].x && VERTICES[0].y == VERTICES[1].y) {
+    this.rangex(cx-x_scale_min/2, cx+x_scale_min/2);
+    this.rangey(cy-y_scale_min/2, cy+y_scale_min/2);
+    //return;
+  //}
+  
+  if (dx > 0.25*this.data.range.x.span) {
+    this.rangex(cx-dx*2, cx+dx*2);
+  }
+  if (dy > 0.25*this.data.range.y.span) {
+    this.rangey(cy-dy*2, cy+dy*2);
+  }
+
 
   
 }

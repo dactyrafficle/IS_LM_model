@@ -19,21 +19,32 @@
 
 <style>
 
-.myinputs {
- width: 100px;
+.input_table {
+  border-collapse: collapse;
 }
-
-
+.input_table td {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+.input_table td input {
+  text-align: right;
+  width: 100px;
+  border: none;
+  height: 25px;
+}
+.endo-1 {
+  background-color: #c2d1f0;
+}
+.endo-2 {
+  background-color: #ffe6b3;
+}
 </style>
 </head>
 
-
-
 <div class='section'>
-<div class='sub-section'>
-<table class='mytables'>
- <tr><td colspan='99'>IS curve</td></tr>
- <tr><td colspan='99'>CONSUMER SPENDING</td></tr>
+<div style='display: inline-block; vertical-align: top;'>
+<table class='input_table'>
+
  <tr>
   <td><span>c</span></td>
   <td><input class='myinputs' id='state_a_c' type='number' min=0 max=0.99 step=0.01 value='0.7' /></td>
@@ -43,52 +54,51 @@
   <td><input class='myinputs' id='state_a_t' type='number' min=0 max=0.99 step=0.01 value='0.15' /></td>
   <td><input class='myinputs' id='state_b_t' type='number' min=0 max=0.99 step=0.01 value='0.15' /></td>
  </tr>
- <tr>
+ <tr class='endo-1'>
   <td><span class='math'>T = tY</span></td>
   <td><input class='myinputs' id='state_a_T' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_T' disabled type='number' /></td>
  </tr>
- <tr>
-  <td><span class='math'>C(c, t, Y) = cY-ctY</span></td>
+ <tr class='endo-1'>
+  <td><span class='math'>C = c(Y-T)</span></td>
   <td><input class='myinputs' id='state_a_C' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_C' disabled type='number' /></td>
  </tr>
+
  <tr>
-  <td><span>G</span></td>
+  <td><span class='math'>G</span></td>
   <td><input class='myinputs' id='state_a_G' type='number' step=100 value='5000' /></td>
   <td><input class='myinputs' id='state_b_G' type='number' step=100 value='5000' /></td>
  </tr>
  
- <tr><td colspan='99'>INVESTMENTS</td></tr>
  <tr>
   <td><span class='math'>I_0</span></td>
   <td><input class='myinputs' id='state_a_I_0' type='number' step=100 value='5000' /></td>
   <td><input class='myinputs' id='state_b_I_0' type='number' step=100 value='5000' /></td>
  </tr>
  <tr>
-  <td><span class='math'>\kappa</span> : income elasticity of investment</td>
+  <td><span class='math'>\kappa</span><!-- : income elasticity of investment--></td>
   <td><input class='myinputs' id='state_a_kappa' type='number' step=0.01 value='0.04' /></td>
   <td><input class='myinputs' id='state_b_kappa' type='number' step=0.01 value='0.04' /></td>
  </tr>
  <tr>
-  <td><span class='math'>\lambda</span>: interest elasticity of investment</td>
-  <td><input class='myinputs' id='state_a_lambda' type='number' step=0.01 value='0.2' /></td>
-  <td><input class='myinputs' id='state_b_lambda' type='number' step=0.01 value='0.2' /></td>
+  <td><span class='math'>\lambda</span><!--: interest elasticity of investment --></td>
+  <td><input class='myinputs' id='state_a_lambda' type='number' step=0.01 value='-0.2' /></td>
+  <td><input class='myinputs' id='state_b_lambda' type='number' step=0.01 value='-0.2' /></td>
  </tr>
- <tr>
-  <td><span class='math'>I(Y,r) = I_0 \cdot \dfrac{Y^{\kappa}}{r^{\lambda}}</span></td>
+ <tr class='endo-1'>
+  <td><span class='math'>I = I_0 \cdot Y^{\kappa} \cdot r^{\lambda}</span></td>
   <td><input class='myinputs' id='state_a_I' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_I' disabled type='number' /></td>
  </tr>
 
- <tr><td colspan='99'>EXPORTS</td></tr>
  <tr>
   <td><span class='math'>X_0</span></td>
   <td><input class='myinputs' id='state_a_X_0' type='number' step=100 value='500' /></td>
   <td><input class='myinputs' id='state_b_X_0' type='number' step=100 value='500' /></td>
  </tr>
  <tr>
-  <td><span class='math'>Y^*</span></td>
+  <td><span class='math'>Y_{\text{f}}</span></td>
   <td><input class='myinputs' id='state_a_Y_f' type='number' step=1000 value='10000' /></td>
   <td><input class='myinputs' id='state_b_Y_f' type='number' step=1000 value='10000' /></td>
  </tr>
@@ -99,16 +109,15 @@
  </tr>
  <tr>
   <td><span class='math'>\sigma</span></td>
-  <td><input class='myinputs' id='state_a_sigma' type='number' step=0.01 value='0.34' /></td>
-  <td><input class='myinputs' id='state_b_sigma' type='number' step=0.01 value='0.34' /></td>
+  <td><input class='myinputs' id='state_a_sigma' type='number' step=0.01 value='-0.34' /></td>
+  <td><input class='myinputs' id='state_b_sigma' type='number' step=0.01 value='-0.34' /></td>
  </tr>
- <tr>
-  <td><span class='math'>X(Y^*,e) = X_0 \cdot \dfrac{{Y^*}^{\rho}}{e^{\sigma}}</span></td>
+ <tr class='endo-1'>
+  <td><span class='math'>X = X_0 \cdot Y_{\text{f}}^{\rho} \cdot e^{\sigma} </span></td>
   <td><input class='myinputs' id='state_a_X' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_X' disabled type='number' /></td>
  </tr>
 
- <tr><td colspan='99'>IMPORTS</td></tr>
  <tr>
   <td><span class='math'>IM_0</span></td>
   <td><input class='myinputs' id='state_a_IM_0' type='number' step=100 value='500' /></td>
@@ -124,159 +133,169 @@
   <td><input class='myinputs' id='state_a_tau' type='number' step=0.01 value='0.3' /></td>
   <td><input class='myinputs' id='state_b_tau' type='number' step=0.01 value='0.3' /></td>
  </tr>
- <tr>
-  <td><span class='math'>IM(Y,e) = IM_0 \cdot Y^{\nu} \cdot e^{\tau}</span></td>
+ <tr class='endo-1'>
+  <td><span class='math'>IM = IM_0 \cdot Y^{\nu} \cdot e^{\tau}</span></td>
   <td><input class='myinputs' id='state_a_IM' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_IM' disabled type='number' /></td>
  </tr>
- <tr>
+ <tr class='endo-1'>
   <td>NET EXPORTS</td>
   <td><input class='myinputs' id='state_a_NX' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_NX' disabled type='number' /></td>
  </tr>
- <tr>
-  <td>Y</td>
+ <tr style='background-color: #ffe6b3;'>
+  <td><span class='math'>Y_{\text{IS}}</span>=C+I+G+NX</td>
   <td><input class='myinputs' id='state_a_Y_IS' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_Y_IS' disabled type='number' /></td>
  </tr>
  
- <tr><td colspan='99'>LM curve</td></tr>
  <tr>
-  <td><span>M</span></td>
-  <td><input class='myinputs' id='state_a_M' type='number' step=5000 value='470000' /></td>
-  <td><input class='myinputs' id='state_b_M' type='number' step=5000 value='470000' /></td>
+  <td><span class='math'>\text{M}_s</span></td>
+  <td><input class='myinputs' id='state_a_M_s' type='number' step=5000 value='470000' /></td>
+  <td><input class='myinputs' id='state_b_M_s' type='number' step=5000 value='470000' /></td>
  </tr>
  <tr>
-  <td><span>P</span></td>
+  <td><span class='math'>P</span></td>
   <td><input class='myinputs' id='state_a_P' type='number' step=0.01 value='1.03' /></td>
   <td><input class='myinputs' id='state_b_P' type='number' step=0.01 value='1.03' /></td>
  </tr>
  <tr>
-  <td><span class='math'>L_0</span> (gamma) : just a multiplier</td>
-  <td><input class='myinputs' id='state_a_gamma' type='number' step=0.01 value='3' /></td>
-  <td><input class='myinputs' id='state_b_gamma' type='number' step=0.01 value='3' /></td>
+  <td><span class='math'>L_0</span></td>
+  <td><input class='myinputs' id='state_a_L_0' type='number' step=0.01 value='3' /></td>
+  <td><input class='myinputs' id='state_b_L_0' type='number' step=0.01 value='3' /></td>
  </tr>
  <tr>
-  <td><span>&epsilon; : income elasticity of L</span></td>
-  <td><input class='myinputs' id='state_a_epsilon' type='number' step=0.01 value='1.89' /></td>
-  <td><input class='myinputs' id='state_b_epsilon' type='number' step=0.01 value='1.89' /></td>
+  <td><span class='math'>\delta</span> : income elasticity of <span class='math'>L</span></span></td>
+  <td><input class='myinputs' id='state_a_delta' type='number' step=0.01 value='1.89' /></td>
+  <td><input class='myinputs' id='state_b_delta' type='number' step=0.01 value='1.89' /></td>
  </tr>
  <tr>
-  <td><span>&theta; : interest elasticity of L</span></td>
-  <td><input class='myinputs' id='state_a_theta' type='number' step=0.01 value='4' /></td>
-  <td><input class='myinputs' id='state_b_theta' type='number' step=0.01 value='4' /></td>
+  <td><span class='math'>\theta</span> : interest elasticity of <span class='math'>L</span> </td>
+  <td><input class='myinputs' id='state_a_theta' type='number' step=0.01 value='-4' /></td>
+  <td><input class='myinputs' id='state_b_theta' type='number' step=0.01 value='-4' /></td>
  </tr>
- <tr>
-  <td><span class='math'>L = L_0 \cdot \dfrac{Y^{\epsilon}}{i^{\theta}}</span></td>
+ <tr class='endo-1'>
+  <td><span class='math'>L = L_0 \cdot Y^{\delta} \cdot i^{\theta}</span></td>
   <td><input class='myinputs' id='state_a_L' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_L' disabled type='number' /></td>
  </tr>
- <tr>
-  <td><span class='math'>Y = \Big (\dfrac{1}{\gamma} \cdot \dfrac{M}{P} \Big )^{1/ \epsilon} \cdot i^{\theta / \epsilon}</span></td>
+ 
+ 
+ <tr class='endo-2'>
+  <td><span class='math'>Y_{\text{LM}}</span></td>
   <td><input class='myinputs' id='state_a_Y_LM' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_Y_LM' disabled type='number' /></td>
  </tr>
 </table>
 </div>
 
-<div class='' style='display: inline-block;'>
-
- <div class=''>
+<div style='display: inline-block; vertical-align: top;'> <!-- right of the main input table -->
  
- <div class='' style='display: inline-block;'>
- <table class='mytables'>
-  <tr><td colspan='99'>FINANCIAL VARIABLES</td></tr>
-  <tr><td>parameter</td><td>desc</td><td>before</td><td>after</td></tr>
-  <tr>
-   <td>i</td>
-   <td>Nominal interest</td>
-   <td><input class='myinputs' id='state_a_i' disabled type='number' /></td>
-   <td><input class='myinputs' id='state_b_i' disabled type='number' /></td>
-  </tr>
+<div>
+ <table class='input_table'>
 
   <tr>
-   <td>E[&pi;]</td>
-   <td>Expected inflation</td>
-   <td><input class='myinputs' id='state_a_pi' type='number' step=0.01 value='1.21' /></td>
-   <td><input class='myinputs' id='state_b_pi' type='number' step=0.01 value='1.21' /></td>
-  </tr>
-  
-  <tr>
-   <td>r = r*</td>
+   <td><span class='math'>r = r^*</span></td>
    <td>Real interest rate</td>
    <td><input class='myinputs' id='state_a_r' type='number' step=0.01 value='6' /></td>
    <td><input class='myinputs' id='state_b_r' type='number' step=0.01 value='6' /></td>
   </tr>
-  
-  <tr>
-   <td>e</td>
-   <td>Nominal exchange rate</td>
-   <td><input class='myinputs' id='state_a_e' disabled type='number' /></td>
-   <td><input class='myinputs' id='state_b_e' disabled type='number' /></td>
+  <tr class='endo-1'>
+   <td><span class='math'>i</span></td>
+   <td>Nominal interest</td>
+   <td><input class='myinputs' id='state_a_i' disabled type='number' /></td>
+   <td><input class='myinputs' id='state_b_i' disabled type='number' /></td>
   </tr>
-  
   <tr>
-   <td>epsilon</td>
+   <td><span class='math'>E[\pi]</span></td>
+   <td>Expected inflation</td>
+   <td><input class='myinputs' id='state_a_Epi' type='number' step=0.01 value='1.21' /></td>
+   <td><input class='myinputs' id='state_b_Epi' type='number' step=0.01 value='1.21' /></td>
+  </tr>
+  <tr>
+   <td><span class='math'>\epsilon</span></td>
    <td>Real exchange rate</td>
-   <td><input class='myinputs' id='' disabled type='number' value='1' /></td>
-   <td><input class='myinputs' id='' disabled type='number' value='1' /></td>
+   <td><input class='myinputs' id='state_a_epsilon' disabled type='number' value='1' /></td>
+   <td><input class='myinputs' id='state_b_epsilon' disabled type='number' value='1' /></td>
   </tr>
-  
-  <tr>
-   <td>Y</td>
-   <td>Domestic GDP</td>
-   <td><input class='myinputs' id='state_a_Y' disabled type='number' /></td>
-   <td><input class='myinputs' id='state_b_Y' disabled type='number' /></td>
+  <tr class='endo-2'>
+    <td><span class='math'>e</span></td>
+    <td>Nominal exchange rate</td>
+    <td><input class='myinputs' id='state_a_e' disabled type='number' /></td>
+    <td><input class='myinputs' id='state_b_e' disabled type='number' /></td>
   </tr>
- 
+
  </table>
  </div>
- 
 
+ <div style='display: inline-block; vertical-align: top;'>
  
- </div>
- 
- <div class=''>
- 
-    <table>
-    
+    <table id='graph-money-market'>
       <tr style='text-align: center; font-weight: bold;'>
         <td></td>
-        <td><p>MONEY MARKET<p><p>LN makes it easier to look at, AND CALCULATE</p></td>
+        <td><p>MONEY MARKET<p></td>
       </tr>
       <tr style='text-align: center; font-weight: bold;'>
-        <td>LN of Nominal Interest</td>
-        <td><div id='lm-box-container' class='sub-section'></div></td>
+        <td>LN(i)</td>
+        <td><div id='lm-box-container'></div></td>
       </tr>
-      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN of Real Money</td></tr>
-    
+      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(M/P)</td></tr>
     </table>
+  </div>
+  
+ <div style='display: inline-block; vertical-align: top;'>
+    <table id='graph-international-trade'>
+      <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><p>INTERNATIONAL TRADE<p></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'>
+        <td>LN($)</td>
+        <td><div id='nx-box-container'></div></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(e)</td></tr>
+    </table>
+ </div>
+
+
+ <div style='display: inline-block; vertical-align: top;'>
+    <table id='graph-is-lm'>
+      <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><p>IS-LM<p></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'>
+        <td>LN(Y)</td>
+        <td><div id='is-lm-box-container'></div></td>
+      </tr>
+      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(e)</td></tr>
+    </table>
+ </div>
+  
+</div>
+
+</div> <!-- closing section -->
+
+
  
-    <table>
-    
-      <tr style='text-align: center; font-weight: bold;'>
-        <td>IMPORT/EXPORT</td>
-        <td>IS-LM</td>
-      </tr>
-      <tr>
-        <td><div id='nx-box-container' class='sub-section'></div></td> 
-        <td><div id='box-container' class='sub-section'></div></td>
-      </tr>
-    
-    </table>
-    
+
    <div class='sub-section'>
-    <div class='sub-section' id='economic-output' style='vertical-align: bottom;'></div>
+    <div class='sub-section' id='summary-box-container' style='vertical-align: bottom;'></div>
    </div>
 
- </div>
- 
-</div>
-
-</div>
-
+<script src='SOLVE_LAMBERT.js'></script>
 <script src='GET_INPUT_VALUES.js'></script>
+<script src='GET_OUTPUT_VALUES.js'></script>
 <script src='UPDATE_TABLE.js'></script>
+<script src='UPDATE_MONEY_MARKET_GRAPH.js'></script>
+<script src='UPDATE_INT_TRADE_GRAPH.js'></script>
+<script src='UPDATE_IS_LM_GRAPH.js'></script>
+
+
+<script src='setup.js'></script>
+
+
+<!--
 <script src='GETEXX.js'></script>
 <script src='GETYIS.js'></script>
 <script src='GETEIS.js'></script>
@@ -285,36 +304,7 @@
 <script src='GET_ECONOMIC_OUTPUT.js'></script>
 <script src='UPDATE_OUTPUT_BOX.js'></script>
 <script src='DRAW_CURVE.js'></script>
-<script src='setup.js'></script>
-
-<script>
-
-let b;
-let output_box;
-
-let INPUT_VALUES;
-
-let IS_CURVES = {
- 'a':null,
- 'b':null
-};
-
-let SOLUTIONS = {
- 'a':null,
- 'b':null
-}
-
-let LM_CURVES = {
- 'a':null,
- 'b':null
-}
-
-let ECONOMIC_OUTPUT = {
- 'a':null,
- 'b':null
-}
-
-</script>
+-->
 
 
 <div class='section'>
@@ -327,9 +317,58 @@ let ECONOMIC_OUTPUT = {
     <tr><td>LM curve </td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td></tr>
     <tr><td>Equilibrium condition:</td><td><span class='math'>Z=Y</span></td></tr>
     <tr><td>SOE</td><td><span class='math'>r=r^*</span></td></tr>
-    <tr><td>PPP</td><td><span class='math'>\epsilon = 1</span><td></tr>
+    <tr><td>PPP</td><td><span class='math'>\epsilon = 1</span></td></tr>
   </table>
 
+  <p> finish the 3 graphs </p>
+  <p> The international trade graph is surprizingly complex, because you can't just change e and plug it to get NX. If you change e, Y changes. That makes C, I and IM change. </p>
+  
+  <p> graph the overall economy - output boxes </p>
+  <p> graph the newton-raphson approx im using </p>
+
+  <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}e^{\sigma}-IM_0Y^{\nu}e^{\tau}</span></p>
+
+  <p> I'm going to replace e with s, and IM with M </p>
+  
+  <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}s^{\sigma}-M_0Y^{\nu}s^{\tau}</span></p>
+
+  <h4> Solving for s </h4>
+
+  <p> Solving for s is easy enough. </p>
+  
+  <p><span class='math'>\dfrac{Y-cY+ctY - G - I_0Y^{\kappa}r^{\lambda}}{M_0Y^{\nu}} = \dfrac{X_0Y_f^{\rho}}{M_0Y^{\nu}}s^{\sigma}-s^{\tau}</span></p>
+
+  <p> While I do not know how to solve for s algabraically, I used to newton raphson method to do it numerically. </p>
+  
+  <p> Should I know how to solve it? </p>
+  
+  <ul>
+    <li><p><span class='math'>q = \dfrac{Y-cY+ctY - G - I_0Y^{\kappa}r^{\lambda}}{M_0Y^{\nu}}</span></p>
+    <li><p><span class='math'>a = \dfrac{X_0Y_f^{\rho}}{M_0Y^{\nu}}</span></p>
+    <li><p><span class='math'>x = s^{\sigma}</span></p>
+    <li><p><span class='math'>m = \frac{\tau}{\sigma}</span></p>
+  </ul>
+  <p><span class='math'>q = a s^{\sigma}-s^{\tau}</span></p>
+  <p><span class='math'>f(x) = x^m - ax + q = 0</span></p>
+
+  <p> Is the approach I've used sensible? I do not have any experience with this equation, and it causes pain somewhere inside my head where, it is rumored, is a brain, which, so far as I can tell, does mostly nothing. </p>
+
+  <h4> Solving for Y, given s </h4>
+
+  <p> Not so easy. </p>
+  
+  <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}s^{\sigma}-M_0Y^{\nu}s^{\tau}</span></p>
+  
+  <p><span class='math'>(1-c+ct)Y + M_0s^{\tau}Y^{\nu} - I_0r^{\lambda}Y^{\kappa} = G + X_0Y_f^{\rho}s^{\sigma}</span></p>
+  
+  <p><span class='math'>\alpha Y + \beta Y^{\nu} - \gamma Y^{\kappa} = h </span></p>
+  
+  <p>If I lived to be 1000 years old I would not know where to begin here. </p>
+  
+  <p><span class='math'>f(Y) = \alpha Y + \beta Y^{\nu} - \gamma Y^{\kappa} - h = 0 </span></p>
+  
+  <p>So I just resort to NR and hope it works. </p>
+  
 </div>
 
 

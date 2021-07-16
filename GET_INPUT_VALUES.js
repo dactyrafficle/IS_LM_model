@@ -1,17 +1,9 @@
 function GET_INPUT_VALUES() {
 
-/*
-  document.getElementById('state_a_i*').value = (parseFloat(state_a_r.value) + parseFloat(state_a_pi.value)).toFixed(2);
-  document.getElementById('state_b_i*').value = (parseFloat(state_b_r.value) + parseFloat(state_b_pi.value)).toFixed(2);
+  let a = {'exo':null};
+  let b = {'exo':null};
 
-  document.getElementById('state_a_pi*').value = parseFloat(state_a_pi.value);
-  document.getElementById('state_b_pi*').value = parseFloat(state_b_pi.value);
-  
-  document.getElementById('state_a_r').value = (parseFloat(state_a_r_world.value)).toFixed(2);
-  document.getElementById('state_b_r').value = (parseFloat(state_b_r_world.value)).toFixed(2);
-*/
-  
-  let a = {
+  a.exo = {
    'c': parseFloat(state_a_c.value),
    't': parseFloat(state_a_t.value),
    'G': parseFloat(state_a_G.value),
@@ -28,19 +20,18 @@ function GET_INPUT_VALUES() {
    'nu': parseFloat(state_a_nu.value),
    'tau': parseFloat(state_a_tau.value),
 
-   'M': parseFloat(state_a_M.value),
+   'M_s': parseFloat(state_a_M_s.value),
    'P': parseFloat(state_a_P.value),
-   'gamma': parseFloat(state_a_gamma.value), // L_0
-   'epsilon': parseFloat(state_a_epsilon.value),
+   'L_0': parseFloat(state_a_L_0.value),
+   'delta': parseFloat(state_a_delta.value),
    'theta': parseFloat(state_a_theta.value),
    
    'r':parseFloat(state_a_r.value),
-   'pi': parseFloat(state_a_pi.value),
-   'i': parseFloat(state_a_r.value) + parseFloat(state_a_pi.value)
-
+   'Epi':parseFloat(state_a_Epi.value),
+   'epsilon':parseFloat(state_a_epsilon.value)
   }
   
-  let q = {
+  b.exo = {
    'c': parseFloat(state_b_c.value),
    't': parseFloat(state_b_t.value),
    'G': parseFloat(state_b_G.value),
@@ -57,19 +48,19 @@ function GET_INPUT_VALUES() {
    'nu': parseFloat(state_b_nu.value),
    'tau': parseFloat(state_b_tau.value),
 
-   'M': parseFloat(state_b_M.value),
+   'M_s': parseFloat(state_b_M_s.value),
    'P': parseFloat(state_b_P.value),
-   'gamma': parseFloat(state_b_gamma.value),
-   'epsilon': parseFloat(state_b_epsilon.value),
+   'L_0': parseFloat(state_b_L_0.value),
+   'delta': parseFloat(state_b_delta.value),
    'theta': parseFloat(state_b_theta.value),
 
    'r':parseFloat(state_b_r.value),
-   'pi': parseFloat(state_b_pi.value),
-   'i': parseFloat(state_b_r.value) + parseFloat(state_b_pi.value)
+   'Epi':parseFloat(state_b_Epi.value),
+   'epsilon':parseFloat(state_b_epsilon.value)
   }
 
   return {
-   'a':a,
-   'b':q
+    'a':a,
+    'b':b
   } 
 }
