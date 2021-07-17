@@ -1,14 +1,14 @@
 
-let b_lm, b_nx, b_is_lm;
+let b_lm, b_nx, b_is_lm, b_lf, b_nco;
 
 let INPUT_VALUES;
 let OUTPUT_VALUES;
 
 window.addEventListener('load', function(e) {
 
-  let s_box = 390;
+  let s_box = 300;
 
-  b_is_lm = new Box("e", "LN(Y)");
+  b_is_lm = new Box("LN(e)", "LN(Y)");
   document.getElementById('is-lm-box-container').appendChild(b_is_lm.returnCanvas());
   b_is_lm.border('1px solid #ddd');
   b_is_lm.dimension(s_box, s_box);
@@ -23,7 +23,16 @@ window.addEventListener('load', function(e) {
   b_nx.border('1px solid #ddd');
   b_nx.dimension(s_box, s_box);
 
-
+  b_lf = new Box('r', 'LF');
+  document.getElementById('lf-box-container').appendChild(b_lf.returnCanvas());
+  b_lf.border('1px solid #ddd');
+  b_lf.dimension(s_box, s_box);
+  
+  b_nco = new Box('r', 'LF');
+  document.getElementById('nco-box-container').appendChild(b_nco.returnCanvas());
+  b_nco.border('1px solid #ddd');
+  b_nco.dimension(s_box, s_box);
+  
   INPUT_VALUES = GET_INPUT_VALUES();
   OUTPUT_VALUES = GET_OUTPUT_VALUES(INPUT_VALUES);
   UPDATE_TABLE(OUTPUT_VALUES);

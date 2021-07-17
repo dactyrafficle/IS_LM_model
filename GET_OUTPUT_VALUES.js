@@ -24,14 +24,30 @@ function GET_OUTPUT_VALUES(INPUT_VALUES) {
   // GET TAX
   a.endo.T = a.exo.t*a.endo.Y;
   b.endo.T = b.exo.t*b.endo.Y;
+
+  // GET DEFICIT
+  a.endo.D = a.exo.G - a.endo.T;
+  b.endo.D = b.exo.G - b.endo.T;
   
   // GET CONSUMPTION
   a.endo.C = a.exo.c*(a.endo.Y-a.endo.T);
   b.endo.C = b.exo.c*(b.endo.Y-b.endo.T);
 
+  // GET SAVINGS
+  a.endo.S = (1-a.exo.c)*(a.endo.Y-a.endo.T);
+  b.endo.S = (1-b.exo.c)*(b.endo.Y-b.endo.T);
+
   // GET INVESTMENT
   a.endo.I = a.exo.I_0*a.endo.Y**a.exo.kappa*a.exo.r**a.exo.lambda;
   b.endo.I = b.exo.I_0*b.endo.Y**b.exo.kappa*b.exo.r**b.exo.lambda;
+  
+  // GET LOANABLE FUNDS
+  a.endo.LF = a.endo.S - a.endo.I;
+  b.endo.LF = b.endo.S - b.endo.I;
+  
+  // GET NET CAPITAL OUTFLOW
+  a.endo.NCO = a.endo.S - a.endo.I - a.endo.D;
+  b.endo.NCO = b.endo.S - b.endo.I - b.endo.D;
 
   // GET EXCHANGE RATE - USE N-R METHOD
   a.temp.MA = a.endo.C + a.endo.I + a.exo.G;

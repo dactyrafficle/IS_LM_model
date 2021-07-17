@@ -1,14 +1,19 @@
 function UPDATE_INT_TRADE_GRAPH(box, OUTPUT_VALUES) {
 
   box.clear();
-  
+
+
   // cant be log-log bc nx can be negative
-  
   let p0 = {}; 
   p0.a = {'x':Math.log(OUTPUT_VALUES.a.endo.e),'y':OUTPUT_VALUES.a.endo.NX};
   p0.b = {'x':Math.log(OUTPUT_VALUES.b.endo.e),'y':OUTPUT_VALUES.b.endo.NX};
 
-  box.RESCALE_BASED_ON_CM(0.7, 2, 7000, [p0.a, p0.b])
+  box.RESCALE_BASED_ON_CM(0.7, 2, 7000, [p0.a, p0.b]);
+  box.rangex(-2.6, 4.6);
+  box.rangey(-20000, 20000);
+  
+  // NX = 0
+  box.CONNECTVALUES2([{'x':box.data.range.x.min,'y':0},{'x':box.data.range.x.max,'y':0}],'#ddd', 2);
   
   
   let a_arr = [];

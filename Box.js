@@ -239,7 +239,7 @@ Box.prototype.SHOW_FLOATING_LOG_Y_AXIS = function(n) {
   this.ctx.fillStyle = '#333';
   this.ctx.textAlign = 'left';
   this.ctx.textBaseline = 'middle';
-  this.ctx.fillText((v0.y).toFixed(2), p0.x+2*dsw, p0.y);
+  //this.ctx.fillText((v0.y).toFixed(2), p0.x+2*dsw, p0.y);
   this.ctx.stroke();
   this.CONNECTVALUES(v0, v1, '#333', 0.5); 
  }
@@ -273,7 +273,7 @@ Box.prototype.SHOW_FLOATING_Y_AXIS = function(n) {
   this.ctx.fillStyle = '#333';
   this.ctx.textAlign = 'left';
   this.ctx.textBaseline = 'middle';
-  this.ctx.fillText((v0.y).toFixed(0), p0.x+2*dsw, p0.y);
+  //this.ctx.fillText((v0.y).toFixed(0), p0.x+2*dsw, p0.y);
   this.ctx.stroke();
   this.CONNECTVALUES(v0, v1, '#333', 0.5); 
  }
@@ -315,7 +315,7 @@ Box.prototype.SHOW_FLOATING_LOG_X_AXIS = function(n, y_val) {
   this.ctx.fillStyle = '#333';
   this.ctx.textAlign = 'center';
   this.ctx.textBaseline = 'top';
-  this.ctx.fillText((v0.x).toFixed(2), p0.x, p0.y+1*dsh);
+  //this.ctx.fillText((v0.x).toFixed(2), p0.x, p0.y+1*dsh);
   this.ctx.stroke();
   this.CONNECTVALUES(v0, v1, '#333', 0.5); 
  }
@@ -361,7 +361,7 @@ Box.prototype.SHOW_FLOATING_X_AXIS = function(n, y_val) {
   this.ctx.fillStyle = '#333';
   this.ctx.textAlign = 'center';
   this.ctx.textBaseline = 'top';
-  this.ctx.fillText(v0.x.toFixed(0), p0.x, p0.y+1*dsh);
+  //this.ctx.fillText(v0.x.toFixed(0), p0.x, p0.y+1*dsh);
   this.ctx.stroke();
   this.CONNECTVALUES(v0, v1, '#333', 0.5); 
  }

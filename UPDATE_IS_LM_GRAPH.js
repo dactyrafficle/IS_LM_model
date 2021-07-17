@@ -24,6 +24,8 @@ function UPDATE_IS_LM_GRAPH(box, OUTPUT_VALUES) {
   }
   
   
+  box.rangex(-2.6, 4.6);
+  
   let a_arr = [];
   let b_arr = [];
 

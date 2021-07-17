@@ -41,6 +41,7 @@
 </style>
 </head>
 
+
 <div class='section'>
 <div style='display: inline-block; vertical-align: top;'>
 <table class='input_table'>
@@ -55,20 +56,44 @@
   <td><input class='myinputs' id='state_b_t' type='number' min=0 max=0.99 step=0.01 value='0.15' /></td>
  </tr>
  <tr class='endo-1'>
-  <td><span class='math'>T = tY</span></td>
+  <td><span class=''>T = tY</span></td>
   <td><input class='myinputs' id='state_a_T' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_T' disabled type='number' /></td>
  </tr>
  <tr class='endo-1'>
-  <td><span class='math'>C = c(Y-T)</span></td>
+  <td><span class=''>C = c(Y - T)</span></td>
   <td><input class='myinputs' id='state_a_C' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_C' disabled type='number' /></td>
  </tr>
+ 
+ <tr class='endo-1'>
+  <td><span class=''>S = (1 - c) &middot; (Y - T)</span></td>
+  <td><input class='myinputs' id='state_a_S' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_S' disabled type='number' /></td>
+ </tr>
 
+ <tr class='endo-1'>
+  <td><span class=''>LF = S - I [loanable funds]</span></td>
+  <td><input class='myinputs' id='state_a_LF' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_LF' disabled type='number' /></td>
+ </tr>
+
+ <tr class='endo-1'>
+  <td><span class=''>NCO = (S - I) - (G - T) = (X - IM)</span></td>
+  <td><input class='myinputs' id='state_a_NCO' disabled type='number' /></td>
+  <td><input class='myinputs' id='state_b_NCO' disabled type='number' /></td>
+ </tr>
+ 
  <tr>
-  <td><span class='math'>G</span></td>
+  <td><span class=''>G</span></td>
   <td><input class='myinputs' id='state_a_G' type='number' step=100 value='5000' /></td>
   <td><input class='myinputs' id='state_b_G' type='number' step=100 value='5000' /></td>
+ </tr>
+ 
+ <tr class='endo-1'>
+  <td><span class=''>D = G - T</span></td>
+  <td><input class='myinputs' id='state_a_D' disabled type='number' step=100 /></td>
+  <td><input class='myinputs' id='state_b_D' disabled type='number' step=100 /></td>
  </tr>
  
  <tr>
@@ -139,7 +164,7 @@
   <td><input class='myinputs' id='state_b_IM' disabled type='number' /></td>
  </tr>
  <tr class='endo-1'>
-  <td>NET EXPORTS</td>
+  <td><span class=''>NX = (X - IM)</span></td>
   <td><input class='myinputs' id='state_a_NX' disabled type='number' /></td>
   <td><input class='myinputs' id='state_b_NX' disabled type='number' /></td>
  </tr>
@@ -215,8 +240,8 @@
   <tr>
    <td><span class='math'>\epsilon</span></td>
    <td>Real exchange rate</td>
-   <td><input class='myinputs' id='state_a_epsilon' disabled type='number' value='1' /></td>
-   <td><input class='myinputs' id='state_b_epsilon' disabled type='number' value='1' /></td>
+   <td><input class='myinputs' id='state_a_epsilon' disabled type='number' value='' /></td>
+   <td><input class='myinputs' id='state_b_epsilon' disabled type='number' value='' /></td>
   </tr>
   <tr class='endo-2'>
     <td><span class='math'>e</span></td>
@@ -239,44 +264,50 @@
         <td></td>
         <td><div id='lm-box-container'></div></td>
       </tr>
-      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(M/P)</td></tr>
+      <tr style='text-align: center; font-weight: bold;'><td></td><td></td></tr>
     </table>
   </div>
-  
+ 
  <div style='display: inline-block; vertical-align: top;'>
-    <table id='graph-is-lm'>
+ 
+    <table id='graph-loanable-funds'>
+    
       <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><p>LOANABLE FUNDS<p></td>
         <td></td>
         <td><p>IS-LM<p></td>
       </tr>
+      
       <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><div id='lf-box-container'></div></td>
         <td></td>
         <td><div id='is-lm-box-container'></div></td>
       </tr>
-      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(e)</td></tr>
-    </table>
- </div>
- 
- <div style='display: inline-block; vertical-align: top;'>
-    <table id='graph-international-trade'>
+      
       <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><p>NET CAPITAL OUTFLOW<p></td>
         <td></td>
         <td><p>INTERNATIONAL TRADE<p></td>
       </tr>
+      
       <tr style='text-align: center; font-weight: bold;'>
+        <td></td>
+        <td><div id='nco-box-container'></div></td>
         <td></td>
         <td><div id='nx-box-container'></div></td>
       </tr>
-      <tr style='text-align: center; font-weight: bold;'><td></td><td>LN(e)</td></tr>
+      
     </table>
+    
  </div>
  
 </div>
 
 </div> <!-- closing section -->
 
-
- 
 
    <div class='sub-section'>
     <div class='sub-section' id='summary-box-container' style='vertical-align: bottom;'></div>
@@ -293,19 +324,6 @@
 
 <script src='setup.js'></script>
 
-
-<!--
-<script src='GETEXX.js'></script>
-<script src='GETYIS.js'></script>
-<script src='GETEIS.js'></script>
-<script src='GET_IS_CURVE.js'></script>
-<script src='GET_SOLUTION.js'></script>
-<script src='GET_ECONOMIC_OUTPUT.js'></script>
-<script src='UPDATE_OUTPUT_BOX.js'></script>
-<script src='DRAW_CURVE.js'></script>
--->
-
-
 <div class='section'>
 
   <h4> Overview </h4>
@@ -316,8 +334,10 @@
     <tr><td>LM curve </td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td></tr>
     <tr><td>Equilibrium condition:</td><td><span class='math'>Z=Y</span></td></tr>
     <tr><td>SOE</td><td><span class='math'>r=r^*</span></td></tr>
-    <tr><td>PPP</td><td><span class='math'>\epsilon = 1</span></td></tr>
+    <tr><td>PPP</td><td><span class='math'>\epsilon = \dfrac{eP}{P^*}</span>, but let <span class='math'>P = P^*</span>so <span class='math'>\epsilon=e</span></td></tr>
   </table>
+  
+  <p> In this simple model, the LM equality determines Y, since i is given. Subbing Y into the IS equality solves for the exchange rate.</p>
 </div>
 
 <div class='section'>
