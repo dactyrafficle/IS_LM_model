@@ -3,7 +3,7 @@ function UPDATE_LF_GRAPH(box, OUTPUT_VALUES) {
   box.clear();
   
   box.rangex(0, 5);
-  box.rangey(-1, 30000);
+  box.rangey(-1, 40000);
   
   // get r : changing R means we have to recalc the whole thing
   // calculate y

@@ -28,7 +28,7 @@ window.addEventListener('load', function(e) {
   b_lf.border('1px solid #ddd');
   b_lf.dimension(s_box, s_box);
   
-  b_nco = new Box('r', 'LF');
+  b_nco = new Box('r', 'NCO');
   document.getElementById('nco-box-container').appendChild(b_nco.returnCanvas());
   b_nco.border('1px solid #ddd');
   b_nco.dimension(s_box, s_box);

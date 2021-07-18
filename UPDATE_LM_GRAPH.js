@@ -2,7 +2,7 @@ function UPDATE_LM_GRAPH(box, OUTPUT_VALUES) {
 
   box.clear();
   
-  box.rangex(0, 4030000);
+  box.rangex(0, 7030000);
   box.rangey(-1, 10);
   
   // not too sure how to graph this.

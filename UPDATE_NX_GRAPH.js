@@ -13,7 +13,7 @@ function UPDATE_NX_GRAPH(box, OUTPUT_VALUES) {
   box.rangey(-20000, 20000);
   
   // NX = 0
-  box.CONNECTVALUES2([{'x':box.data.range.x.min,'y':0},{'x':box.data.range.x.max,'y':0}],'#ddd', 2);
+  box.CONNECTVALUES2([{'x':box.data.range.x.min,'y':0},{'x':box.data.range.x.max,'y':0}],'#ddd', 1);
   
   
   let a_arr = [];
@@ -30,16 +30,16 @@ function UPDATE_NX_GRAPH(box, OUTPUT_VALUES) {
 
 
   // THE EXCHANGE RATES
-  box.CONNECTVALUES2([{'x':p0.a.x,'y':box.data.range.y.min},{'x':p0.a.x,'y':box.data.range.y.max}],'#ddd', 2);
-  box.CONNECTVALUES2([{'x':p0.b.x,'y':box.data.range.y.min},{'x':p0.b.x,'y':box.data.range.y.max}],'#ddd', 2);
+  box.CONNECTVALUES2([{'x':p0.a.x,'y':box.data.range.y.min},{'x':p0.a.x,'y':box.data.range.y.max}],'#ddd', 1);
+  box.CONNECTVALUES2([{'x':p0.b.x,'y':box.data.range.y.min},{'x':p0.b.x,'y':box.data.range.y.max}],'#ddd', 1);
   
 
   // SHOW POINTS
   box.SHOWVALUE(p0.a, '#FC0', 3);
-  box.SHOWVALUE(p0.b, '#adc2eb', 3);
+  box.SHOWVALUE(p0.b, '#adc2eb', 2);
 
   box.SHOW_FLOATING_LOG_X_AXIS(9);
-  box.SHOW_FLOATING_Y_AXIS(9);
+  box.SHOW_FLOATING_LOG_Y_AXIS(9);
 }
 
 
