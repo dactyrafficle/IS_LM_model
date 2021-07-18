@@ -86,8 +86,8 @@
  
  <tr>
   <td><span class=''>G</span></td>
-  <td><input class='myinputs' id='state_a_G' type='number' step=100 value='5000' /></td>
-  <td><input class='myinputs' id='state_b_G' type='number' step=100 value='5000' /></td>
+  <td><input class='myinputs' id='state_a_G' type='number' step=100 value='12000' /></td>
+  <td><input class='myinputs' id='state_b_G' type='number' step=100 value='12000' /></td>
  </tr>
  
  <tr class='endo-1'>
@@ -98,8 +98,8 @@
  
  <tr>
   <td><span class='math'>I_0</span></td>
-  <td><input class='myinputs' id='state_a_I_0' type='number' step=100 value='5000' /></td>
-  <td><input class='myinputs' id='state_b_I_0' type='number' step=100 value='5000' /></td>
+  <td><input class='myinputs' id='state_a_I_0' type='number' step=100 value='10000' /></td>
+  <td><input class='myinputs' id='state_b_I_0' type='number' step=100 value='10000' /></td>
  </tr>
  <tr>
   <td><span class='math'>\kappa</span><!-- : income elasticity of investment--></td>
@@ -107,9 +107,9 @@
   <td><input class='myinputs' id='state_b_kappa' type='number' step=0.01 value='0.04' /></td>
  </tr>
  <tr>
-  <td><span class='math'>\lambda</span><!--: interest elasticity of investment --></td>
-  <td><input class='myinputs' id='state_a_lambda' type='number' step=0.01 value='-0.2' /></td>
-  <td><input class='myinputs' id='state_b_lambda' type='number' step=0.01 value='-0.2' /></td>
+  <td><span class='math'>\lambda</span> : interest elasticity of I (-1,0)</td>
+  <td><input class='myinputs' id='state_a_lambda' type='number' step=0.01 min=-1 max=0 value='-0.2' /></td>
+  <td><input class='myinputs' id='state_b_lambda' type='number' step=0.01 min=-1 max=0 value='-0.2' /></td>
  </tr>
  <tr class='endo-1'>
   <td><span class='math'>I = I_0 \cdot Y^{\kappa} \cdot r^{\lambda}</span></td>
@@ -124,8 +124,8 @@
  </tr>
  <tr>
   <td><span class='math'>Y_{\text{f}}</span></td>
-  <td><input class='myinputs' id='state_a_Y_f' type='number' step=1000 value='10000' /></td>
-  <td><input class='myinputs' id='state_b_Y_f' type='number' step=1000 value='10000' /></td>
+  <td><input class='myinputs' id='state_a_Y_f' type='number' step=1000 value='55000' /></td>
+  <td><input class='myinputs' id='state_b_Y_f' type='number' step=1000 value='55000' /></td>
  </tr>
  <tr>
   <td><span class='math'>\rho</span></td>
@@ -176,13 +176,13 @@
  
  <tr>
   <td><span class='math'>\text{M}_s</span></td>
-  <td><input class='myinputs' id='state_a_M_s' type='number' step=5000 value='470000' /></td>
-  <td><input class='myinputs' id='state_b_M_s' type='number' step=5000 value='470000' /></td>
+  <td><input class='myinputs' id='state_a_M_s' type='number' step=5000 value='2030000' /></td>
+  <td><input class='myinputs' id='state_b_M_s' type='number' step=5000 value='2030000' /></td>
  </tr>
  <tr>
   <td><span class='math'>P</span></td>
-  <td><input class='myinputs' id='state_a_P' type='number' step=0.01 value='1.03' /></td>
-  <td><input class='myinputs' id='state_b_P' type='number' step=0.01 value='1.03' /></td>
+  <td><input class='myinputs' id='state_a_P' type='number' step=0.01 value='1.00' /></td>
+  <td><input class='myinputs' id='state_b_P' type='number' step=0.01 value='1.00' /></td>
  </tr>
  <tr>
   <td><span class='math'>L_0</span></td>
@@ -191,13 +191,13 @@
  </tr>
  <tr>
   <td><span class='math'>\delta</span> : income elasticity of <span class='math'>L</span></span></td>
-  <td><input class='myinputs' id='state_a_delta' type='number' step=0.01 value='1.89' /></td>
-  <td><input class='myinputs' id='state_b_delta' type='number' step=0.01 value='1.89' /></td>
+  <td><input class='myinputs' id='state_a_delta' type='number' step=0.01 value='1.33' /></td>
+  <td><input class='myinputs' id='state_b_delta' type='number' step=0.01 value='1.33' /></td>
  </tr>
  <tr>
   <td><span class='math'>\theta</span> : interest elasticity of <span class='math'>L</span> </td>
-  <td><input class='myinputs' id='state_a_theta' type='number' step=0.01 value='-4' /></td>
-  <td><input class='myinputs' id='state_b_theta' type='number' step=0.01 value='-4' /></td>
+  <td><input class='myinputs' id='state_a_theta' type='number' step=0.01 value='-0.97' /></td>
+  <td><input class='myinputs' id='state_b_theta' type='number' step=0.01 value='-0.97' /></td>
  </tr>
  <tr class='endo-1'>
   <td><span class='math'>L = L_0 \cdot Y^{\delta} \cdot i^{\theta}</span></td>
@@ -222,8 +222,8 @@
   <tr>
    <td><span class='math'>r = r^*</span></td>
    <td>Real interest rate</td>
-   <td><input class='myinputs' id='state_a_r' type='number' step=0.01 value='6' /></td>
-   <td><input class='myinputs' id='state_b_r' type='number' step=0.01 value='6' /></td>
+   <td><input class='myinputs' id='state_a_r' type='number' step=0.01 value='2' /></td>
+   <td><input class='myinputs' id='state_b_r' type='number' step=0.01 value='2' /></td>
   </tr>
   <tr class='endo-1'>
    <td><span class='math'>i</span></td>
@@ -317,10 +317,12 @@
 <script src='GET_INPUT_VALUES.js'></script>
 <script src='GET_OUTPUT_VALUES.js'></script>
 <script src='UPDATE_TABLE.js'></script>
-<script src='UPDATE_MONEY_MARKET_GRAPH.js'></script>
-<script src='UPDATE_INT_TRADE_GRAPH.js'></script>
-<script src='UPDATE_IS_LM_GRAPH.js'></script>
 
+<script src='UPDATE_LM_GRAPH.js'></script>
+<script src='UPDATE_NX_GRAPH.js'></script>
+<script src='UPDATE_IS_LM_GRAPH.js'></script>
+<script src='UPDATE_LF_GRAPH.js'></script>
+<script src='UPDATE_NCO_GRAPH.js'></script>
 
 <script src='setup.js'></script>
 
@@ -330,14 +332,16 @@
   <p> A short term equilibrium is the solution to the following :</p>
 
   <table class='mytables'>
-    <tr><td>IS curve </td><td><span class='math'>Z = C(Y,T) + I(Y,r) + G + X(Y^*,e) - IM(Y,e)</span></td></tr>
-    <tr><td>LM curve </td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td></tr>
+    <tr><td>IS curve </td><td><span class='math'>Z = C(Y,T) + I(Y,r) + G + X(Y^*,e) - IM(Y,e)</span></td><td>f(Y,e) = 0</td></tr>
     <tr><td>Equilibrium condition:</td><td><span class='math'>Z=Y</span></td></tr>
+    <tr><td>LM curve </td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td><td>g(Y) = 0</td></tr>
     <tr><td>SOE</td><td><span class='math'>r=r^*</span></td></tr>
     <tr><td>PPP</td><td><span class='math'>\epsilon = \dfrac{eP}{P^*}</span>, but let <span class='math'>P = P^*</span>so <span class='math'>\epsilon=e</span></td></tr>
   </table>
   
-  <p> In this simple model, the LM equality determines Y, since i is given. Subbing Y into the IS equality solves for the exchange rate.</p>
+  <p> In this simple model, the LM equality, g(Y)=0, determines Y, since i is given. Subbing Y into the IS equality, f(Y,e)=0, solves for the exchange rate.</p>
+  
+  <p> Here, NCO is positively sloped with r, because I've assumed r=r* at all times. So this economy is never in a position where r DNE r*. </p>
 </div>
 
 <div class='section'>

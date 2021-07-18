@@ -13,7 +13,7 @@ window.addEventListener('load', function(e) {
   b_is_lm.border('1px solid #ddd');
   b_is_lm.dimension(s_box, s_box);
 
-  b_lm = new Box('LN(M/P)', 'LN(i)');
+  b_lm = new Box('M/P', 'i');
   document.getElementById('lm-box-container').appendChild(b_lm.returnCanvas());
   b_lm.border('1px solid #ddd');
   b_lm.dimension(s_box, s_box);
@@ -34,21 +34,33 @@ window.addEventListener('load', function(e) {
   b_nco.dimension(s_box, s_box);
   
   INPUT_VALUES = GET_INPUT_VALUES();
-  OUTPUT_VALUES = GET_OUTPUT_VALUES(INPUT_VALUES);
+  
+  OUTPUT_VALUES = {
+    'a':GET_OUTPUT_SET(INPUT_VALUES.a),
+    'b':GET_OUTPUT_SET(INPUT_VALUES.b)
+  }
+  
   UPDATE_TABLE(OUTPUT_VALUES);
-  UPDATE_MONEY_MARKET_GRAPH(b_lm, OUTPUT_VALUES);
-  UPDATE_INT_TRADE_GRAPH(b_nx, OUTPUT_VALUES);
+  UPDATE_LM_GRAPH(b_lm, OUTPUT_VALUES);
+  UPDATE_NX_GRAPH(b_nx, OUTPUT_VALUES);
   UPDATE_IS_LM_GRAPH(b_is_lm, OUTPUT_VALUES);
+  UPDATE_LF_GRAPH(b_lf, OUTPUT_VALUES);
+  UPDATE_NCO_GRAPH(b_nco, OUTPUT_VALUES);
   
   let myinputs = document.getElementsByClassName('myinputs');
   for (let i = 0; i < myinputs.length; i++) {
     myinputs[i].addEventListener('input', function(e) {
       INPUT_VALUES = GET_INPUT_VALUES();
-      OUTPUT_VALUES = GET_OUTPUT_VALUES(INPUT_VALUES);
+      OUTPUT_VALUES = {
+        'a':GET_OUTPUT_SET(INPUT_VALUES.a),
+        'b':GET_OUTPUT_SET(INPUT_VALUES.b)
+      }
       UPDATE_TABLE(OUTPUT_VALUES);
-      UPDATE_MONEY_MARKET_GRAPH(b_lm, OUTPUT_VALUES);
-      UPDATE_INT_TRADE_GRAPH(b_nx, OUTPUT_VALUES);
+      UPDATE_LM_GRAPH(b_lm, OUTPUT_VALUES);
+      UPDATE_NX_GRAPH(b_nx, OUTPUT_VALUES);
       UPDATE_IS_LM_GRAPH(b_is_lm, OUTPUT_VALUES);
+      UPDATE_LF_GRAPH(b_lf, OUTPUT_VALUES);
+      UPDATE_NCO_GRAPH(b_nco, OUTPUT_VALUES);
     });
   }
 

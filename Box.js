@@ -330,11 +330,9 @@ Box.prototype.SHOW_FLOATING_X_AXIS = function(n, y_val) {
 
  //let n = 9;
  let sh;
- if (arguments[1] !== null) {
+ if (arguments[1]) {
    let v3 = {'x':0,'y':y_val};
-   //console.log(v3);
    let p3 = this.VAL2PIXEL(v3);
-   //console.log(p3);
    sh = p3.y;
  } else {
   sh = this.data.dimension.h - this.data.dimension.h/n;
