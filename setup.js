@@ -23,12 +23,12 @@ window.addEventListener('load', function(e) {
   b_nx.border('1px solid #ddd');
   b_nx.dimension(s_box, s_box);
 
-  b_lf = new Box('r', 'LF');
+  b_lf = new Box('r = r*', 'LF');
   document.getElementById('lf-box-container').appendChild(b_lf.returnCanvas());
   b_lf.border('1px solid #ddd');
   b_lf.dimension(s_box, s_box);
   
-  b_nco = new Box('r', 'NCO');
+  b_nco = new Box('r = r*', 'NCO');
   document.getElementById('nco-box-container').appendChild(b_nco.returnCanvas());
   b_nco.border('1px solid #ddd');
   b_nco.dimension(s_box, s_box);

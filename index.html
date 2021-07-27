@@ -336,30 +336,25 @@
     <tr><td>Equilibrium condition:</td><td><span class='math'>Z=Y</span></td></tr>
     <tr><td>LM curve </td><td><span class='math'>L(i,Y) = \dfrac{M}{P} </span></td><td><span class='math'>g(Y) = 0</span></td></tr>
     <tr><td>SOE</td><td><span class='math'>r=r^*</span></td><td></td></tr>
+    <tr><td><span class='math'>E[\pi]=0</span></td><td><span class='math'>i=r</span> as <span class='math'>i=r+E[\pi]=r+0=r</span></td><td></td></tr>
     <tr><td>PPP</td><td><span class='math'>\epsilon = \dfrac{eP}{P^*}</span>, but let <span class='math'>P = P^*</span>so <span class='math'>\epsilon=e</span></td><td></td></tr>
   </table>
   
-  <p> In this simple model, the LM equality, <span class='math'>g(Y)=0</span>, determines Y, since i is given. Subbing Y into the IS equality, <span class='math'>f(Y,e)=0</span>, solves for the exchange rate.</p>
+  <p> In this simple model, the LM equality, <span class='math'>g(Y)=0</span>, determines <span class='math'>Y</span>, since <span class='math'>r=i</span> is given. Subbing <span class='math'>Y</span> into the IS equality, <span class='math'>f(Y,e)=0</span>, turns it into <span class='math'>h(e)=0</span>, which determines <span class='math'>e</span>.</p>
+
+ 
+  <p> The LM graph shows <span class='math'>L(i,\bar{Y})</span>, meaning <span class='math'>Y</span> is fixed.</p>
   
-  <p> Here, NCO is positively sloped with r, because r=r* at all times - meaning it's always equilibrated. If r &gt; r*, then the incentive to keep money in the domestic economy would be greater, and so NCO would go up.</p>
+  <p> This is different to the <strong>LF</strong> and <strong>NCO</strong> graphs, where <span class='math'>S(Y)</span> and <span class='math'>NCO(r)</span> are positively sloped. That's because in these graphs, I'm recalculating the entire system based on <span class='math'>r</span>. Both <span class='math'>S(Y)</span> and <span class='math'>NCO(r)</span> rely on <span class='math'>r</span> indirectly. So if I didn't, the graphs would just be straight lines. In effect, these 2 graphs show the <strong>equilibrium states</strong> given <span class='math'>r=r*</span> as opposed to what happens when <span class='math'>r \ne r*</span>.</p>
+
+  <p> For example, by decreasing <span class='math'>M</span>, <span class='math'>r</span> increases so that <span class='math'>r > r^*</span>. That would invite foreign money into the economy. <span class='math'>NCO</span> decreases. That means <span class='math'>NCO</span>, when <span class='math'>Y</span> is fixed, is negatively sloped with <span class='math'>r</span>. But, <span class='math'>NCO=NX</span>, so <span class='math'>NX</span> down means <span class='math'>e</span> goes up. From the IS-LM graph, as <span class='math'>e</span> goes up, <span class='math'>Y</span> goes down. This shifts <span class='math'>L(i,Y)</span> back to the point where it was initially. The only difference is that the increase in <span class='math'>M</span> causes <span class='math'>e</span> to rise to assure that <span class='math'>Y</span> returns to its initial state. </p>
   
-  <p> It might be useful to show the transition from disequilibrium to equilibrium. Not sure how tho, yet. </p>
-  <p> I'm thinking of something like <span class='math'>r_t = r^* + e^{-At}(r_{t-1}-r^*)</span>. If something throws r our of whack, it will equlibrate. The problem with the equations I have is that they only show the final states. So you don't see what had to happen or what took place in the econony to bring about the final equilibrium.</p>
+  <p> None of that activity is shown in these graphs. </p>
   
-  <p> Example : </p>
-  <ul>
-    <li> Say M/P goes up, creating a new intersection between M/P and L(i,Y) [calculate this like it was a CLOSED economy]
-    <li> now r is below r*
-    <li> Since r &lt; r*, domestic investors look for foreign assets for investment
-    <li> They need to buy foreign currency to do that : the supply of domestic currency in FOREX increases
-    <li> Assuming demand doesnt change, the supply shifts, pushing e down, and NX up
-    <li> NX up means Y up
-    <li> Y up shifts L(i,Y) up, pushing i higher
-    <li> This continues until i=i*
-  </ul>
+  <p> It might be useful to show the transition from disequilibrium to equilibrium. But I'm not quite sure how tho, yet. </p>
   
-  <p> The LM curve is a partial derivitive, since Y is fixed. But the other graphs are not. I think it is more informative this way tho. </p>
-  
+  <p> I'm thinking of something like <span class='math'>r_t = r^* + e^{-At}(r_{t-1}-r^*)</span>. If something throws <span class='math'>r</span> out of whack, it will equlibrate. The problem with the equations I have is that they only show the equilibrium states. </p>
+
 </div>
 
 <div class='section'>
@@ -368,17 +363,17 @@
 
   <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}e^{\sigma}-IM_0Y^{\nu}e^{\tau}</span></p>
 
-  <p> I'm going to replace e with s, and IM with M </p>
+  <p> I'm going to replace <span class='math'>e</span> with <span class='math'>s</span>, and <span class='math'>IM_0</span> with <span class='math'>M_0</span> </p>
   
   <p><span class='math'>Y=cY-ctY + G + I_0Y^{\kappa}r^{\lambda}+X_0Y_f^{\rho}s^{\sigma}-M_0Y^{\nu}s^{\tau}</span></p>
 
   <h4> Solving for s, given Y </h4>
 
-  <p> Solving for s is easy enough. </p>
+  <p> Solving for <span class='math'>s</span> is easy enough. </p>
   
   <p><span class='math'>\dfrac{Y-cY+ctY - G - I_0Y^{\kappa}r^{\lambda}}{M_0Y^{\nu}} = \dfrac{X_0Y_f^{\rho}}{M_0Y^{\nu}}s^{\sigma}-s^{\tau}</span></p>
 
-  <p> While I do not know how to solve for s algabraically, I used to newton raphson method to do it numerically. </p>
+  <p> While I do not know how to solve for <span class='math'>s</span> algabraically, I can use the Newton–Raphson method to do it numerically. </p>
 
   <ul>
     <li><p><span class='math'>q = \dfrac{Y-cY+ctY - G - I_0Y^{\kappa}r^{\lambda}}{M_0Y^{\nu}}</span></p>
@@ -387,7 +382,7 @@
     <li><p><span class='math'>m = \frac{\tau}{\sigma}</span></p>
   </ul>
   <p><span class='math'>q = a s^{\sigma}-s^{\tau}</span></p>
-  <p><span class='math'>f(x) = x^m - ax + q = 0</span></p>
+  <p><span class='math outline'>f(x) = x^m - ax + q = 0</span></p>
 
   <h4> Solving for Y, given s </h4>
   
@@ -397,7 +392,7 @@
   
   <p><span class='math'>\alpha Y + \beta Y^{\nu} - \gamma Y^{\kappa} = h </span></p>
   
-  <p><span class='math'>f(Y) = \alpha Y + \beta Y^{\nu} - \gamma Y^{\kappa} - h = 0 </span></p>
+  <p><span class='math outline'>f(Y) = \alpha Y + \beta Y^{\nu} - \gamma Y^{\kappa} - h = 0 </span></p>
   
   <p> It's the same as above : can't do it math-wise so a numerical solution is all I can do. </p>
   
